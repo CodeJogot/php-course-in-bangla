@@ -8,12 +8,11 @@ After completing the 30-chapters module, jump in the [Projects Section](#).
 | :------------------------------------------: | :------------------------------------------------------------------: | :-------------------: |
 | [00](#chapter-00-how-the-course-is-designed) | [How The Course is Designed](#chapter-00-how-the-course-is-designed) |       Watch Now       |
 |    [01](#chapter-01-introduction-to-php)     |        [Introduction to PHP](#chapter-01-introduction-to-php)        |       Watch Now       |
-|                   [02](#)                    |                                [](#)                                 |       Watch Now       |
-|                    [02]()                    |                                 []()                                 |       Watch Now       |
-|                   [03](#)                    |                                 []()                                 |       Watch Now       |
-|                    [04]()                    |                              []() []()                               |         []()          |
-|                    [05]()                    |                                 []()                                 |         []()          |
-|                    [06]()                    |                                 []()                                 |     [Watch Now]()     |
+|       [02](#chapter-02-php-data-types)       |             [PHP Data Type](#chapter-02-php-data-types)              |       Watch Now       |
+|        [03](#chapter-03-php-strings)         |                [PHP String](#chapter-03-php-strings)                 |       Watch Now       |
+|        [04](#chapter-04-php-numbers)         |                [PHP Numbers](#chapter-04-php-numbers)                |       Watch Now       |
+|        [05](#chapter-05-php-casting)         |                [PHP Casting](#chapter-05-php-casting)                |     [Watch Now]()     |
+|          [06](#chapter-06-php-math)          |                   [PHP Math](#chapter-06-php-math)                   |     [Watch Now]()     |
 |                    [07]()                    |                                 []()                                 |     [Watch Now]()     |
 |                    [08]()                    |                                 []()                                 |                       |
 |                    [09]()                    |                                 []()                                 |                       |
@@ -628,6 +627,7 @@ PHP-তে `var_dump()` এবং `gettype()` ফাংশন ব্যবহা
 # Chapter-03: PHP Strings
 
 ## Table of Contents
+
 1. [What are Strings in PHP?](#what-are-strings-in-php)
 2. [Why Use Strings?](#why-use-strings)
 3. [Declaring Strings in PHP](#declaring-strings-in-php)
@@ -664,6 +664,7 @@ PHP-তে `var_dump()` এবং `gettype()` ফাংশন ব্যবহা
 ## 2. Why Use Strings?
 
 Strings ব্যবহারের কিছু কারণ:
+
 - **Text-based data সংরক্ষণ** করা যায়।
 - **User input, file handling, API responses** প্রক্রিয়াকরণ করা যায়।
 - **Database থেকে ডাটা ফরম্যাট** করা যায়।
@@ -673,6 +674,7 @@ Strings ব্যবহারের কিছু কারণ:
 ## 3. Declaring Strings in PHP
 
 PHP-তে **দুইভাবে String তৈরি করা যায়**:
+
 1. **Single Quotes (`'`) ব্যবহার করে**
 2. **Double Quotes (`"`) ব্যবহার করে**
 
@@ -684,6 +686,7 @@ PHP-তে **দুইভাবে String তৈরি করা যায়**:
 ```
 
 **Single Quotes vs Double Quotes:**
+
 - **Single Quotes (`'`)** কোনো ভেরিয়েবল প্রসেস করে না।
 - **Double Quotes (`"`)** ভেরিয়েবল প্রসেস করে।
 
@@ -803,7 +806,7 @@ PHP-তে **string case পরিবর্তন** করার জন্য �
 ```php
 <?php
   $text = "Hello, PHP!";
-  
+
   echo strtoupper($text); // Output: HELLO, PHP!
   echo strtolower($text); // Output: hello, php!
   echo ucfirst("php is great!"); // Output: Php is great!
@@ -839,6 +842,7 @@ PHP-তে `explode()` এবং `str_split()` ব্যবহার করে *
 ```
 
 **Output:**
+
 ```php
 Array ( [0] => PHP [1] => is [2] => a [3] => powerful [4] => language! )
 ```
@@ -864,6 +868,7 @@ Array ( [0] => PHP [1] => is [2] => a [3] => powerful [4] => language! )
 # Chapter-04: PHP Numbers
 
 ## Table of Contents
+
 1. [What are Numbers in PHP?](#what-are-numbers-in-php)
 2. [Types of Numbers in PHP](#types-of-numbers-in-php)
 3. [PHP Integer](#php-integer)
@@ -876,11 +881,11 @@ Array ( [0] => PHP [1] => is [2] => a [3] => powerful [4] => language! )
    - [ceil() এবং floor()](#ceil-and-floor)
    - [rand()](#rand)
    - [is_numeric()](#is_numeric)
-6. [Examples](#examples)
-7. [Real-Life Examples](#real-life-examples)
+8. [Examples](#examples)
+9. [Real-Life Examples](#real-life-examples)
    - [Example 1: Shopping Cart Calculation](#example-1-shopping-cart-calculation)
    - [Example 2: Student Grade Calculation](#example-2-student-grade-calculation)
-8. [Key Points to Remember](#key-points-to-remember)
+10. [Key Points to Remember](#key-points-to-remember)
 
 ---
 
@@ -898,6 +903,7 @@ PHP-তে প্রধানত দুই ধরনের সংখ্যা �
 - **Float বা Double** (ভগ্নাংশ বা দশমিক সংখ্যা)
 
 এছাড়া বিশেষভাবে রয়েছে:
+
 - **Infinity** (অসীম)
 - **NaN** (Not a Number)
 
@@ -937,7 +943,7 @@ Integer এবং Float পার্থক্য বুঝতে উদাহর
 <?php
   $intNum = 10;      // Integer
   $floatNum = 10.5;  // Float
-  
+
   var_dump($intNum);   // int(10)
   var_dump($floatNum); // float(10.5)
 ?>
@@ -950,6 +956,7 @@ Integer এবং Float পার্থক্য বুঝতে উদাহর
 কিছু গুরুত্বপূর্ণ built-in ফাংশন:
 
 ### abs() – Absolute Value
+
 সংখ্যার positive মান দেখায়।
 
 ```php
@@ -959,6 +966,7 @@ Integer এবং Float পার্থক্য বুঝতে উদাহর
 ```
 
 ### round() – Round a Number
+
 সংখ্যাকে কাছাকাছি integer-এ রূপান্তর করে।
 
 ```php
@@ -980,6 +988,7 @@ Integer এবং Float পার্থক্য বুঝতে উদাহর
 ```
 
 ### rand()
+
 Random সংখ্যা তৈরি করে।
 
 ```php
@@ -1062,6 +1071,7 @@ Random সংখ্যা তৈরি করে।
 # Chapter-05: PHP Casting
 
 ## Table of Contents
+
 1. [What is Casting in PHP?](#what-is-casting-in-php)
 2. [Why is Casting Important?](#why-is-casting-important)
 3. [Types of Casting in PHP](#types-of-casting-in-php)
@@ -1071,12 +1081,12 @@ Random সংখ্যা তৈরি করে।
    - [(bool) Casting](#bool-casting)
    - [(array) Casting](#array-casting)
    - [(object) Casting](#object-casting)
-3. [How to Perform Type Casting](#how-to-perform-type-casting)
-4. [Examples](#examples)
-5. [Real-Life Examples](#real-life-examples)
+4. [How to Perform Type Casting](#how-to-perform-type-casting)
+5. [Examples](#examples)
+6. [Real-Life Examples](#real-life-examples)
    - [Example 1: Form Data Handling](#example-1-form-input-handling)
    - [Example 2: Database Data Processing](#example-2-database-data-handling)
-5. [Key Points to Remember](#key-points-to-remember)
+7. [Key Points to Remember](#key-points-to-remember)
 
 ---
 
@@ -1102,14 +1112,14 @@ Casting গুরুত্বপূর্ণ কারণ:
 
 PHP-তে Casting-এর নিম্নোক্ত ধরনগুলো রয়েছে:
 
-| Casting Type | Usage |
-|--------------|-----------|
-| `(int)` বা `(integer)` | Integer-এ Convert করার জন্য |
+| Casting Type            | Usage                           |
+| ----------------------- | ------------------------------- |
+| `(int)` বা `(integer)`  | Integer-এ Convert করার জন্য     |
 | `(float)` বা `(double)` | দশমিক সংখ্যায় convert করার জন্য |
-| `(string)` | Text-এ রূপান্তর |
-| `(bool)` | `true` বা `false`-এ রূপান্তর |
-| `(array)` | Array-তে convert করা |
-| `(object)` | Object-এ convert করা |
+| `(string)`              | Text-এ রূপান্তর                 |
+| `(bool)`                | `true` বা `false`-এ রূপান্তর    |
+| `(array)`               | Array-তে convert করা            |
+| `(object)`              | Object-এ convert করা            |
 
 ---
 
@@ -1280,6 +1290,7 @@ User Input validation করার সময় সংখ্যা সঠিকভ�
 # Chapter-06: PHP Math
 
 ## Table of Contents
+
 1. [What is PHP Math?](#what-is-php-math)
 2. [Importance of PHP Math Functions](#importance-of-php-math-functions)
 3. [Basic Mathematical Operators](#basic-mathematical-operators)
@@ -1321,20 +1332,21 @@ PHP Math Functions গুরুত্বপূর্ণ কারণ:
 
 PHP-তে সাধারণ গাণিতিক অপারেটর সমূহ:
 
-| Operator | Name | Example | Result |
-|----------|------|---------|--------|
-| `+` | Addition | `$a + $b` | `$a এবং $b এর যোগফল` |
-| `-` | Subtraction | `$a - $b` | `$a থেকে $b বিয়োগ` |
-| `*` | Multiplication | `$a * $b` | `$a এবং $b এর গুণফল` |
-| `/` | Division | `$a / $b` | `$a কে $b দিয়ে ভাগ` |
-| `%` | Modulus | `$a % $b` | `$a কে $b দিয়ে ভাগের ভাগশেষ` |
-| `**` | Exponentiation | `$a ** $b` | `$a এর উপর $b পাওয়ার` |
+| Operator | Name           | Example    | Result                        |
+| -------- | -------------- | ---------- | ----------------------------- |
+| `+`      | Addition       | `$a + $b`  | `$a এবং $b এর যোগফল`          |
+| `-`      | Subtraction    | `$a - $b`  | `$a থেকে $b বিয়োগ`           |
+| `*`      | Multiplication | `$a * $b`  | `$a এবং $b এর গুণফল`          |
+| `/`      | Division       | `$a / $b`  | `$a কে $b দিয়ে ভাগ`          |
+| `%`      | Modulus        | `$a % $b`  | `$a কে $b দিয়ে ভাগের ভাগশেষ` |
+| `**`     | Exponentiation | `$a ** $b` | `$a এর উপর $b পাওয়ার`        |
 
 ---
 
 ## 3. PHP Math Functions
 
-### abs() 
+### abs()
+
 `abs()` ফাংশন একটি সংখ্যার **Absolute মান** রিটার্ন করে:
 
 ```php
@@ -1346,6 +1358,7 @@ echo abs(-10); // Output: 10
 ---
 
 ### round()
+
 `round()` দশমিক সংখ্যাকে কাছের integer-এ round করে:
 
 ```php
@@ -1357,6 +1370,7 @@ echo round(4.6); // Output: 4
 ---
 
 ### ceil()
+
 `ceil()` ফাংশন যেকোনো সংখ্যাকে পরবর্তী integer এ রূপান্তর করে।
 
 ```php
@@ -1366,6 +1380,7 @@ echo ceil(4.2); // Output: 5
 ```
 
 ### floor()
+
 `floor()` সংখ্যাকে আগের integer এ নিয়ে যায়।
 
 ```php
@@ -1377,6 +1392,7 @@ echo floor(4.8); // Output: 4
 ---
 
 ### rand()
+
 Random সংখ্যা তৈরি করার জন্য ব্যবহার হয়:
 
 ```php
@@ -1388,6 +1404,7 @@ echo rand(1, 100); // Output: 1 থেকে 100 এর মধ্যে random �
 ---
 
 ### min() এবং max()
+
 `min()` ফাংশন সবচেয়ে ছোট সংখ্যা এবং `max()` ফাংশন সবচেয়ে বড় সংখ্যা নির্ণয় করে।
 
 ```php
@@ -1459,7 +1476,7 @@ echo max(10, 5, 20, 8); // Output: 20
 ```php
 <?php
 $marks = array(75, 85, 90, 80, 70);
-$total = array_sum($marks); 
+$total = array_sum($marks);
 $average = $total / count($marks);
 
 echo "Average Marks: " . round($average, 2); // Output: Average Marks: 80.00
