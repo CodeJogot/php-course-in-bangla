@@ -15,13 +15,13 @@ After completing the 30-chapters module, jump in the [Projects Section](#).
 |          [06](#chapter-06-php-math)          |                   [PHP Math](#chapter-06-php-math)                   |     [Watch Now]()     |
 |                    [07](#chapter-07-php-constants)                    |                                 [PHP Constants](#chapter-07-php-constants)                                 |     [Watch Now]()     |
 |                    [08](#chapter-08-php-magic-constants)                    |                                 [PHP Magic Constants](#chapter-08-php-magic-constants)                                 |      [Watch Now]()                 |
-|                    [09](#chapter-09-php-operators-)                    |                                 [PHP Operators](#chapter-09-php-operators-)                                 |      [Watch Now]()                 |
+|                    [09](#chapter-09-php-operators)                    |                                 [PHP Operators](#chapter-09-php-operators)                                 |      [Watch Now]()                 |
 |                    [10](#chapter-10-php-loops-)                    |                                 [PHP Loops](#chapter-10-php-loops-)                                 |      [Watch Now]()                 |
 |                    [11](#chapter-11-php-functions-)                    |                                 [PHP Functions](#chapter-11-php-functions-)                                 |      [Watch Now]()                 |
 |                    [12](#chapter-12-php-arrays-)                    |                                 [PHP Arrays](#chapter-12-php-arrays-)                                 |      [Watch Now]()                 |
 |                   [13](#chapter-13-php-array-create-access-add-remove-️)                    |                                 [PHP Array Create, Access, Add, Remove](#chapter-13-php-array-create-access-add-remove-️)                                 |      [Watch Now]()                 |
 |                    [14](#chapter-14--php-array-functions-a-comprehensive-guide-)                    |                                 [PHP Array Functions: A Comprehensive Guide](#chapter-14--php-array-functions-a-comprehensive-guide-)                                 |      [Watch Now]()                 |
-|                   [15](#chapter-15--php-global-variables---superglobals-)                    |                                 [PHP Global Variables - Superglobals](#chapter-15--php-global-variables---superglobals-)                                 |      [Watch Now]()                 |
+|                   [15](#chapter-15--php-global-variables---superglobals)                    |                                 [PHP Global Variables - Superglobals](#chapter-15-php-global-variables---superglobals)                                 |      [Watch Now]()                 |
 |                    [16](#chapter-16--php-regular-expressions-regex-)                    |                                 [PHP Regular Expressions (Regex)](#chapter-16--php-regular-expressions-regex-)                                 |      [Watch Now]()                 |
 |                   [17](#chapter-17--php-form-handling-)                    |                                 [PHP Form Handling](#chapter-17--php-form-handling-)                                 |      [Watch Now]()                 |
 |                    [18](#chapter-18--php-form-validation-)                    |                                 [PHP Form Validation](#chapter-18--php-form-validation-)                                 |      [Watch Now]()                 |
@@ -1868,7 +1868,7 @@ echo __NAMESPACE__; // Output: CodeJogot (যদি namespace নির্ধা
     <b><a href="#php-course-in-bangla">↥ Go to Top</a></b>
 </div>
 
-# Chapter-09: PHP Operators 🚀
+# Chapter-09: PHP Operators
 
 ## Table of Contents 📚
 1. [What are Operators in PHP?](#what-are-operators-in-php)
@@ -2086,7 +2086,7 @@ if($marks >= 80 && $marks <=100){
     <b><a href="#php-course-in-bangla">↥ Go to Top</a></b>
 </div>
 
-# Chapter-10: PHP Loops 🔄
+# Chapter-10: PHP Loops
 
 ## Table of Contents 📚
 1. [What is a Loop in PHP?](#what-is-a-loop-in-php)
@@ -2325,7 +2325,7 @@ foreach($products as $product) {
     <b><a href="#php-course-in-bangla">↥ Go to Top</a></b>
 </div>
 
-# Chapter-11: PHP Functions 🚀
+# Chapter-11: PHP Functions
 
 ## Table of Contents 📚
 1. [What is a PHP Function?](#what-is-a-php-function)
@@ -2550,7 +2550,7 @@ echo currencyConverter(100, 118); // Output: 11800 (e.g., USD to BDT)
     <b><a href="#php-course-in-bangla">↥ Go to Top</a></b>
 </div>
 
-# Chapter-12: PHP Arrays 📚
+# Chapter-12: PHP Arrays
 
 ## Table of Contents 🔖
 1. [What is an Array in PHP?](#what-is-an-array-in-php)
@@ -2820,7 +2820,7 @@ echo "Total amount: " . $total . " BDT"; // Output: 4200 BDT
     <b><a href="#php-course-in-bangla">⬆️ Go to Top</a></b>
 </div>
 
-# Chapter-13: PHP Array: Create, Access, Add, Remove 🗂️
+# Chapter-13: PHP Array: Create, Access, Add, Remove
 
 ## Table of Contents 📚
 1. [Creating Arrays in PHP](#creating-arrays-in-php)
@@ -3045,7 +3045,7 @@ foreach($cart as $item){
     <b><a href="#php-course-in-bangla">⬆️ Go to Top</a></b>
 </div>
 
-# Chapter-14: 📋 PHP Array Functions: A Comprehensive Guide
+# Chapter-14: PHP Array Functions: A Comprehensive Guide
 
 PHP তে **arrays** ব্যবহারের জন্য অনেক বিল্ট-ইন **array functions** রয়েছে, যা array **manipulation, sorting, filtering, merging, searching** ইত্যাদি কাজ সহজ করে তোলে। এই **documentation** এ PHP array functions গুলোর বিস্তারিত ব্যাখ্যা, উদাহরণ, এবং ব্যাবহার দেখানো হয়েছে।
 
@@ -3266,7 +3266,7 @@ print_r($double); // Output: [2, 4, 6]
     <b><a href="#php-course-in-bangla">⬆️ Go to Top</a></b>
 </div>
 
-# Chapter-15: 📋 PHP Global Variables - Superglobals
+# Chapter-15: PHP Global Variables - Superglobals
 
 PHP তে **Superglobal Variables** হলো কিছু বিশেষ ধরনের **predefined global variables**, যা স্ক্রিপ্টের যে কোনো অংশ থেকে access করা যায়। এগুলো **form handling, session management, server information, এবং HTTP request data** পরিচালনার জন্য ব্যবহৃত হয়।  
 
@@ -3509,7 +3509,7 @@ echo "Username: " . $_SESSION["username"];
     <b><a href="#php-course-in-bangla">⬆️ Go to Top</a></b>
 </div>
 
-# Chapter-16: 📋 PHP Regular Expressions (RegEx)
+# Chapter-16: PHP Regular Expressions (RegEx)
 
 PHP তে **Regular Expressions (RegEx)** হল একটি শক্তিশালী টুল যা **pattern matching, searching, and replacing** এর জন্য ব্যবহৃত হয়। এটি সাধারণত **string validation, data extraction, এবং text manipulation** এর জন্য ব্যবহার করা হয়।
 
@@ -3710,7 +3710,7 @@ PHP তে **Regular Expressions (RegEx)** ব্যবহার করে **pat
     <b><a href="#php-course-in-bangla">⬆️ Go to Top</a></b>
 </div>
 
-# Chapter-17: 📋 PHP Form Handling
+# Chapter-17: PHP Form Handling
 
 PHP **Form Handling** হলো একটি গুরুত্বপূর্ণ বিষয় যা **user input collection, validation, and data processing** এর জন্য ব্যবহৃত হয়। এটি মূলত **GET এবং POST** method ব্যবহার করে form data **server-side** এ পাঠাতে এবং প্রক্রিয়াকরণ করতে সাহায্য করে।
 
@@ -3955,7 +3955,7 @@ PHP Form Handling **user input গ্রহণ, প্রক্রিয়া�
     <b><a href="#php-course-in-bangla">⬆️ Go to Top</a></b>
 </div>
 
-# Chapter-18: 📋 PHP Form Validation
+# Chapter-18: PHP Form Validation
 
 PHP **Form Validation** হলো **user input verification & sanitization** করার একটি প্রক্রিয়া, যা **security vulnerabilities** প্রতিরোধ করতে সাহায্য করে। এটি **required fields check, data format validation, এবং malicious input filtering** এর জন্য ব্যবহৃত হয়।
 
@@ -4234,7 +4234,7 @@ PHP Form Validation **user input clean, validate এবং নিরাপদে
     <b><a href="#php-course-in-bangla">⬆️ Go to Top</a></b>
 </div>
 
-# Chapter-19: 📋 PHP Form Required Fields Validation
+# Chapter-19: PHP Form Required Fields Validation
 
 PHP তে **Form Required Fields Validation** হলো এমন একটি process যা **user input check করে নিশ্চিত করে যে কোনো field খালি নেই।** এটি সাধারণত **form submission এর আগে data validate করার জন্য ব্যবহৃত হয়।**  
 
@@ -4464,7 +4464,7 @@ PHP **Required Fields Validation** নিশ্চিত করে যে, **use
     <b><a href="#php-course-in-bangla">⬆️ Go to Top</a></b>
 </div>
 
-# Chapter-20: 📋 PHP Forms - Validate E-mail and URL  
+# Chapter-20: PHP Forms - Validate E-mail and URL  
 
 PHP তে **E-mail এবং URL Validation** হলো একটি গুরুত্বপূর্ণ প্রক্রিয়া, যা **user input validation, security, এবং data accuracy** নিশ্চিত করতে সাহায্য করে।  
 
@@ -4648,7 +4648,7 @@ PHP তে **E-mail এবং URL Validation** ব্যবহার করে *
     <b><a href="#php-course-in-bangla">⬆️ Go to Top</a></b>
 </div>
 
-# Chapter-21: 📅 PHP Date and Time
+# Chapter-21: PHP Date and Time
 
 PHP তে **Date এবং Time** পরিচালনা করার জন্য বিভিন্ন **built-in functions** রয়েছে, যা সময় গণনা, format পরিবর্তন, এবং timezone management করতে সাহায্য করে।  
 
@@ -4869,7 +4869,7 @@ PHP তে **Date এবং Time Management** করার জন্য **date()
     <b><a href="#php-course-in-bangla">⬆️ Go to Top</a></b>
 </div>
 
-# Chapter-22: 📋 PHP Include vs Require
+# Chapter-22: PHP Include vs Require
 
 PHP তে **Include Files** ব্যবহার করা হয় **কোড পুনরায় ব্যবহারযোগ্য করা**, **modular programming** করা, এবং **maintenance সহজ করা**। `include` এবং `require` function ব্যবহার করে **একটি PHP ফাইলকে অন্য ফাইলে সংযুক্ত করা যায়**।  
 
@@ -5022,7 +5022,7 @@ PHP তে **Include Files** ব্যবহার করলে **code reusabili
     <b><a href="#php-course-in-bangla">⬆️ Go to Top</a></b>
 </div>
 
-# Chapter-23: 📂 PHP File Handling 
+# Chapter-23: PHP File Handling 
 
 PHP তে **File Handling** ব্যবহার করা হয় **files read, write, create, edit, delete** করার জন্য। এটি ওয়েব ডেভেলপমেন্টে **file-based data storage, log management, এবং report generation** করতে ব্যবহৃত হয়।  
 
@@ -5279,7 +5279,7 @@ PHP তে **File Handling** ব্যবহার করে **ফাইল ত�
     <b><a href="#php-course-in-bangla">⬆️ Go to Top</a></b>
 </div>
 
-# Chapter-24: 📤 PHP File Upload
+# Chapter-24: PHP File Upload
 
 PHP তে **File Upload** ব্যবহার করা হয় **user-generated content, profile pictures, documents, এবং অন্যান্য media files upload** করার জন্য। এটি **HTML forms এবং PHP scripts** এর মাধ্যমে পরিচালিত হয়।  
 
@@ -5529,7 +5529,7 @@ PHP তে **File Uploading** এর মাধ্যমে **user-generated cont
     <b><a href="#php-course-in-bangla">⬆️ Go to Top</a></b>
 </div>
 
-# Chapter-25: 🍪 PHP Cookies
+# Chapter-25: PHP Cookies
 
 PHP **Cookies** হলো **client-side storage mechanism**, যা ব্যবহারকারীর ব্রাউজারে ছোট **data store** করতে সাহায্য করে। এটি সাধারণত **user preferences, authentication, এবং session tracking** এর জন্য ব্যবহৃত হয়।
 
@@ -5730,7 +5730,7 @@ PHP **Cookies** হলো **user preferences, authentication, এবং session 
     <b><a href="#php-course-in-bangla">⬆️ Go to Top</a></b>
 </div>
 
-# Chapter-26: 🔐 PHP Sessions
+# Chapter-26: PHP Sessions
 
 PHP **Sessions** হলো **server-side storage mechanism**, যা ব্যবহারকারীর তথ্য সংরক্ষণ করে এবং **multiple pages এ data persist** রাখতে সাহায্য করে। এটি **Cookies এর চেয়ে বেশি নিরাপদ** কারণ data **server-side store করা হয়** এবং **client-side এ সরাসরি access করা যায় না**।  
 
