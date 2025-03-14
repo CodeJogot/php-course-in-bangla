@@ -22,17 +22,17 @@ After completing the 30-chapters module, jump in the [Projects Section](#).
 |                   [13](#chapter-13-php-array-create-access-add-remove-️)                    |                                 [PHP Array Create, Access, Add, Remove](#chapter-13-php-array-create-access-add-remove-️)                                 |      [Watch Now]()                 |
 |                    [14](#chapter-14--php-array-functions-a-comprehensive-guide-)                    |                                 [PHP Array Functions: A Comprehensive Guide](#chapter-14--php-array-functions-a-comprehensive-guide-)                                 |      [Watch Now]()                 |
 |                   [15](#chapter-15--php-global-variables---superglobals-)                    |                                 [PHP Global Variables - Superglobals](#chapter-15--php-global-variables---superglobals-)                                 |      [Watch Now]()                 |
-|                    [16]()                    |                                [](#)                                 |                       |
-|                   [17](#)                    |                                 []()                                 |                       |
-|                    [18]()                    |                                 []()                                 |                       |
-|                    [19]()                    |                                 []()                                 |                       |
-|                      20                      |                                                                      |                       |
-|                      21                      |                                                                      |                       |
-|                      22                      |                                                                      |                       |
-|                      23                      |                                                                      |                       |
-|                      24                      |                                                                      |                       |
-|                      25                      |                                                                      |                       |
-|                      26                      |                                                                      |                       |
+|                    [16](#chapter-16--php-regular-expressions-regex-)                    |                                 [PHP Regular Expressions (Regex)](#chapter-16--php-regular-expressions-regex-)                                 |      [Watch Now]()                 |
+|                   [17](#chapter-17--php-form-handling-)                    |                                 [PHP Form Handling](#chapter-17--php-form-handling-)                                 |      [Watch Now]()                 |
+|                    [18](#chapter-18--php-form-validation-)                    |                                 [PHP Form Validation](#chapter-18--php-form-validation-)                                 |      [Watch Now]()                 |
+|                    [19](#chapter-19--php-form-required-fields-validation-)                    |                                 [PHP Form Required Fields Validation](#chapter-19--php-form-required-fields-validation-)                                 |      [Watch Now]()                 |
+|                      [20](#chapter-20--php-forms---validate-e-mail-and-url-)                      |                                 [PHP Forms - Validate E-mail and URL](#chapter-20--php-forms---validate-e-mail-and-url-)                                 |      [Watch Now]()                 |
+|                      [21](#chapter-21--php-date-and-time)                      |             [PHP Date and Time](#chapter-21--php-date-and-time)                                                         |  [Watch Now]()                     | 
+|                      [22](#chapter-22--php-include-vs-require)                      |           [PHP Include vs Require](#chapter-22--php-include-vs-require)                                                           |         [Watch Now]()                 |
+|                      [23](#chapter-23--php-file-handling-)                      |           [PHP File Handling](#chapter-23--php-file-handling-)                                                           |         [Watch Now]()                 |
+|                      [24](#chapter-24--php-file-upload-)                      |           [PHP File Upload](#chapter-24--php-file-upload-)                                                           |         [Watch Now]()                 |
+|                      [25](#chapter-25--php-cookies-)                      |           [PHP Cookies](#chapter-25--php-cookies-)                                                           |         [Watch Now]()                 |
+|                      [26](#chapter-26--php-sessions-)                      |           [PHP Sessions](#chapter-26--php-sessions-)                                                           |         [Watch Now]()                 |
 |                      27                      |                                                                      |                       |
 |                      28                      |                                                                      |                       |
 |                      29                      |                                                                      |                       |
@@ -3504,14 +3504,2487 @@ echo "Username: " . $_SESSION["username"];
 ✅ **Avoid Overusing `$_REQUEST`**:  
 - **`$_REQUEST`** ব্যবহার না করাই ভালো, কারণ এটি **$_GET, $_POST, এবং $_COOKIE** একসাথে handle করে, যা নিরাপত্তার জন্য ঝুঁকিপূর্ণ হতে পারে।  
 
- 
+
+<div align="right">
+    <b><a href="#php-course-in-bangla">⬆️ Go to Top</a></b>
+</div>
+
+# Chapter-16: 📋 PHP Regular Expressions (RegEx)
+
+PHP তে **Regular Expressions (RegEx)** হল একটি শক্তিশালী টুল যা **pattern matching, searching, and replacing** এর জন্য ব্যবহৃত হয়। এটি সাধারণত **string validation, data extraction, এবং text manipulation** এর জন্য ব্যবহার করা হয়।
+
+---
+
+## **Table of Contents**
+1. [What is Regular Expression in PHP?](#what-is-regular-expression-in-php)
+2. [Why Use Regular Expressions?](#why-use-regular-expressions)
+3. [PHP Regular Expression Functions](#php-regular-expression-functions)
+4. [RegEx Syntax and Metacharacters](#regex-syntax-and-metacharacters)
+5. [Examples of PHP Regular Expressions](#examples-of-php-regular-expressions)
+6. [Best Practices](#best-practices)
+
+---
+
+## 1️⃣ **What is Regular Expression in PHP?**
+
+Regular Expression (RegEx) হলো **একটি প্যাটার্ন**, যা **text searching, validation, এবং manipulation** এর জন্য ব্যবহৃত হয়। এটি মূলত **একটি string এর মধ্যে নির্দিষ্ট format খুঁজতে ও modify করতে** ব্যবহৃত হয়।
+
+✅ **Example:**  
+```php
+<?php
+$pattern = "/hello/";
+$text = "hello world!";
+if (preg_match($pattern, $text)) {
+    echo "Match found!";
+} else {
+    echo "No match found!";
+}
+?>
+```
+🔹 **Output:** `Match found!`
+
+---
+
+## 2️⃣ **Why Use Regular Expressions?**
+
+✅ **Why Use RegEx in PHP?**
+
+| Use Case | Example |
+|----------|---------|
+| **String Validation** | Email, phone number, password validation |
+| **Data Extraction** | Extracting emails, URLs, or specific words |
+| **Search and Replace** | Replacing text patterns in a document |
+| **Formatting Data** | Formatting phone numbers, dates, etc. |
+
+✅ **Example Use Cases:**
+- **Email Validation** ✅ `/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/`
+- **Phone Number Validation** ✅ `/^\+?\d{10,15}$/`
+- **Extracting Numbers from a String** ✅ `/\d+/`
+- **Replacing Spaces with Underscores** ✅ `preg_replace('/\s+/', '_', $text)`
+
+---
+
+## 3️⃣ **PHP Regular Expression Functions**
+
+PHP তে RegEx ব্যবহার করতে কয়েকটি বিল্ট-ইন function রয়েছে:
+
+| Function | Description |
+|----------|-------------|
+| `preg_match()` | একটি string এ pattern আছে কিনা তা খোঁজে। |
+| `preg_match_all()` | একটি string এ pattern কতবার আছে তা খুঁজে সব results return করে। |
+| `preg_replace()` | একটি নির্দিষ্ট pattern খুঁজে তা নতুন text দিয়ে replace করে। |
+| `preg_split()` | একটি নির্দিষ্ট pattern অনুসারে string বিভক্ত করে array return করে। |
+| `preg_replace_callback()` | Match করা অংশগুলোর উপর একটি function প্রয়োগ করে। |
+
+✅ **Example of Each Function:**  
+```php
+<?php
+// 1. preg_match()
+$pattern = "/php/i";
+$text = "I love PHP!";
+if (preg_match($pattern, $text)) {
+    echo "Pattern found!";
+}
+
+// 2. preg_match_all()
+$text = "PHP, JavaScript, PHP, Python";
+preg_match_all("/PHP/i", $text, $matches);
+print_r($matches); // Output: Array ( [0] => PHP, [1] => PHP )
+
+// 3. preg_replace()
+$text = "Hello World!";
+$newText = preg_replace("/World/", "PHP", $text);
+echo $newText; // Output: Hello PHP!
+
+// 4. preg_split()
+$text = "apple,banana,mango";
+$fruits = preg_split("/,/", $text);
+print_r($fruits); // Output: Array ( [0] => apple, [1] => banana, [2] => mango )
+?>
+```
+
+---
+
+## 4️⃣ **RegEx Syntax and Metacharacters**
+
+PHP তে **PCRE (Perl-Compatible Regular Expressions)** ব্যবহার করা হয়। এটি `/pattern/modifiers` ফরম্যাটে লেখা হয়।
+
+✅ **Common Metacharacters:**
+
+| Symbol | Description | Example |
+|--------|-------------|---------|
+| `.` | যেকোনো একক character | `/a.b/` => "acb", "aab" |
+| `^` | String এর শুরুতে match করে | `/^hello/` => "hello world" ✅, "world hello" ❌ |
+| `$` | String এর শেষে match করে | `/world$/` => "hello world" ✅, "world hello" ❌ |
+| `\d` | যেকোনো digit (0-9) | `/\d+/` => "123", "42" |
+| `\D` | Non-digit character | `/\D+/` => "abc", "hello" |
+| `\w` | Alphanumeric (a-z, A-Z, 0-9, _) | `/\w+/` => "hello123" |
+| `\W` | Non-word character | `/\W+/` => "!@#", " " |
+| `\s` | Space, tab, newline | `/\s+/` => " " |
+| `\S` | Non-space character | `/\S+/` => "hello" |
+
+✅ **Quantifiers:**
+
+| Symbol | Description | Example |
+|--------|-------------|---------|
+| `*` | 0 বা তার বেশি বার | `/ab*/` => "a", "ab", "abb" |
+| `+` | 1 বা তার বেশি বার | `/ab+/` => "ab", "abb" ❌ "a" |
+| `?` | 0 বা 1 বার | `/ab?/` => "a", "ab" |
+| `{n}` | নির্দিষ্ট n বার | `/a{3}/` => "aaa" |
+| `{n,}` | n বা তার বেশি বার | `/a{2,}/` => "aa", "aaa", "aaaa" |
+| `{n,m}` | কমপক্ষে n এবং সর্বোচ্চ m বার | `/a{2,4}/` => "aa", "aaa", "aaaa" |
+
+✅ **Character Classes:**
+- `[abc]` → "a", "b", বা "c" match করবে
+- `[^abc]` → "a", "b", বা "c" বাদে অন্য character match করবে
+- `[0-9]` → Digits (0 থেকে 9)
+- `[A-Z]` → Uppercase letters
+
+---
+
+## 5️⃣ **Examples of PHP Regular Expressions**
+
+### ✅ **1. Email Validation**
+```php
+<?php
+$email = "test@example.com";
+if (preg_match("/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/", $email)) {
+    echo "Valid Email";
+} else {
+    echo "Invalid Email";
+}
+?>
+```
+
+### ✅ **2. Phone Number Validation**
+```php
+<?php
+$phone = "+8801712345678";
+if (preg_match("/^\+?\d{10,15}$/", $phone)) {
+    echo "Valid Phone Number";
+} else {
+    echo "Invalid Phone Number";
+}
+?>
+```
+
+### ✅ **3. Extract All Numbers from a String**
+```php
+<?php
+$text = "Price: 500, Discount: 50";
+preg_match_all("/\d+/", $text, $numbers);
+print_r($numbers[0]); // Output: Array ( [0] => 500, [1] => 50 )
+?>
+```
+
+### ✅ **4. Replace Multiple Spaces with Single Space**
+```php
+<?php
+$text = "Hello    World!  PHP   is  awesome.";
+$cleanText = preg_replace('/\s+/', ' ', $text);
+echo $cleanText; // Output: "Hello World! PHP is awesome."
+?>
+```
+
+---
+
+## 6️⃣ **Best Practices**
+
+✅ **Use `^` and `$` for Exact Matching**  
+✅ **Escape Special Characters (`\.` for dot, `\+` for plus)**  
+✅ **Use `preg_match_all()` for Multiple Matches**  
+✅ **Use `preg_replace()` for Text Replacement**  
+✅ **Test Regular Expressions in [RegEx101](https://regex101.com/)**  
+
+---
+
+## 🎯 **Final Summary**
+
+PHP তে **Regular Expressions (RegEx)** ব্যবহার করে **pattern matching, validation, এবং text processing** খুব সহজ হয়। এটি **email validation, phone number checking, data extraction, এবং replace operations** এর জন্য অপরিহার্য।
+
+**Most Used Functions:** `preg_match()`, `preg_match_all()`, `preg_replace()`, `preg_split()`  
+**Best Use Cases:** Form validation, search & replace, data extraction  
 
 
 <div align="right">
     <b><a href="#php-course-in-bangla">⬆️ Go to Top</a></b>
 </div>
 
-# Chapter-16: 
+# Chapter-17: 📋 PHP Form Handling
+
+PHP **Form Handling** হলো একটি গুরুত্বপূর্ণ বিষয় যা **user input collection, validation, and data processing** এর জন্য ব্যবহৃত হয়। এটি মূলত **GET এবং POST** method ব্যবহার করে form data **server-side** এ পাঠাতে এবং প্রক্রিয়াকরণ করতে সাহায্য করে।
+
+---
+
+## **Table of Contents**
+1. [What is PHP Form Handling?](#what-is-php-form-handling)
+2. [GET vs POST Method](#get-vs-post-method)
+3. [Creating a Simple Form](#creating-a-simple-form)
+4. [Processing Form Data](#processing-form-data)
+5. [Form Validation](#form-validation)
+6. [Preventing Form Injection (Security)](#preventing-form-injection-security)
+7. [File Upload Handling](#file-upload-handling)
+8. [Best Practices](#best-practices)
+
+---
+
+## 1️⃣ **What is PHP Form Handling?**
+
+PHP তে **Form Handling** ব্যবহার করা হয় **user input collect এবং process** করতে। এটি মূলত **HTML form এর মাধ্যমে user data পাঠায় এবং PHP দ্বারা তা process করে।**
+
+✅ **Example Workflow:**
+1. User **HTML Form** পূরণ করে।
+2. Form data **PHP script** দ্বারা গ্রহণ করা হয়।
+3. Data **validate** এবং **sanitize** করা হয়।
+4. Data **database এ সংরক্ষণ** করা হয় অথবা অন্য কাজে ব্যবহার করা হয়।
+
+---
+
+## 2️⃣ **GET vs POST Method**
+
+| Method | Features | When to Use? |
+|--------|----------|--------------|
+| `GET` | URL এর মাধ্যমে data পাঠায় | Search query, Non-sensitive data |
+| `POST` | Body এর মাধ্যমে data পাঠায় | Login, Registration, Secure data |
+
+✅ **Example Difference:**
+- `GET`: `example.com/form.php?name=Alice&email=alice@example.com`
+- `POST`: **Data hidden থাকে, URL এ দেখা যায় না।**
+
+---
+
+## 3️⃣ **Creating a Simple Form**
+
+PHP form তৈরি করতে **HTML form** এবং **PHP script** একসাথে ব্যবহার করা হয়।
+
+✅ **HTML Form Example:**
+```php
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>PHP Form Example</h2>
+<form action="process.php" method="post">
+  Name: <input type="text" name="name"><br><br>
+  Email: <input type="email" name="email"><br><br>
+  <input type="submit" value="Submit">
+</form>
+
+</body>
+</html>
+```
+
+✅ **Processing Form Data (process.php):**
+```php
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = $_POST["name"];
+    $email = $_POST["email"];
+
+    echo "Name: " . htmlspecialchars($name) . "<br>";
+    echo "Email: " . htmlspecialchars($email);
+}
+?>
+```
+
+---
+
+## 4️⃣ **Processing Form Data**
+
+PHP তে **form data process করার জন্য `$_GET` এবং `$_POST` ব্যবহার করা হয়।**
+
+✅ **GET Method Example:**
+```php
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["name"])) {
+    echo "Name: " . htmlspecialchars($_GET["name"]);
+}
+?>
+<form method="get">
+  Name: <input type="text" name="name">
+  <input type="submit">
+</form>
+```
+
+✅ **POST Method Example:**
+```php
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["name"])) {
+    echo "Name: " . htmlspecialchars($_POST["name"]);
+}
+?>
+<form method="post">
+  Name: <input type="text" name="name">
+  <input type="submit">
+</form>
+```
+
+---
+
+## 5️⃣ **Form Validation**
+
+✅ **Common Validation Checks**
+- **Required Fields**: Input খালি রাখা যাবে না।
+- **Email Validation**: Input valid email format এ আছে কিনা।
+- **Numeric Validation**: Input শুধু সংখ্যা গ্রহণ করবে কিনা।
+- **Length Check**: Input নির্দিষ্ট character limit এর মধ্যে আছে কিনা।
+
+✅ **Example with Validation:**
+```php
+<?php
+$name = $email = "";
+$nameErr = $emailErr = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (empty($_POST["name"])) {
+        $nameErr = "Name is required";
+    } else {
+        $name = htmlspecialchars($_POST["name"]);
+    }
+
+    if (empty($_POST["email"])) {
+        $emailErr = "Email is required";
+    } elseif (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
+        $emailErr = "Invalid email format";
+    } else {
+        $email = htmlspecialchars($_POST["email"]);
+    }
+}
+?>
+
+<form method="post">
+  Name: <input type="text" name="name">
+  <span><?php echo $nameErr; ?></span><br><br>
+  Email: <input type="text" name="email">
+  <span><?php echo $emailErr; ?></span><br><br>
+  <input type="submit">
+</form>
+```
+
+---
+
+## 6️⃣ **Preventing Form Injection (Security)**
+
+🔹 **Common Security Risks:**
+- **SQL Injection**: Malicious SQL query injection।
+- **Cross-Site Scripting (XSS)**: JavaScript injection।
+- **Cross-Site Request Forgery (CSRF)**: Unauthorized request submission।
+
+✅ **Security Best Practices:**
+1. **Use `htmlspecialchars()` to prevent XSS**
+```php
+$name = htmlspecialchars($_POST["name"]);
+```
+
+2. **Use `filter_var()` for Email Validation**
+```php
+$email = filter_var($_POST["email"], FILTER_VALIDATE_EMAIL);
+```
+
+3. **Use Prepared Statements for SQL Queries**
+```php
+$stmt = $pdo->prepare("INSERT INTO users (name, email) VALUES (?, ?)");
+$stmt->execute([$name, $email]);
+```
+
+---
+
+## 7️⃣ **File Upload Handling**
+
+PHP তে **file upload** করতে `$_FILES` superglobal ব্যবহার করা হয়।
+
+✅ **File Upload Form:**
+```php
+<form action="upload.php" method="post" enctype="multipart/form-data">
+  Select File: <input type="file" name="file">
+  <input type="submit" value="Upload">
+</form>
+```
+
+✅ **PHP Script to Process File Upload (`upload.php`):**
+```php
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["file"])) {
+    $uploadDir = "uploads/";
+    $filePath = $uploadDir . basename($_FILES["file"]["name"]);
+
+    if (move_uploaded_file($_FILES["file"]["tmp_name"], $filePath)) {
+        echo "File uploaded successfully!";
+    } else {
+        echo "Error uploading file!";
+    }
+}
+?>
+```
+
+✅ **Security Measures for File Uploads:**
+```php
+$allowedTypes = array("jpg", "jpeg", "png", "pdf");
+$fileType = strtolower(pathinfo($filePath, PATHINFO_EXTENSION));
+
+if (!in_array($fileType, $allowedTypes)) {
+    die("File type not allowed!");
+}
+```
+
+---
+
+## 8️⃣ **Best Practices**
+
+✅ **Use POST for Secure Data Submission**  
+✅ **Always Validate User Input**  
+✅ **Use `htmlspecialchars()` to Prevent XSS**  
+✅ **Sanitize Email & Other Fields with `filter_var()`**  
+✅ **Use Prepared Statements for Database Queries**  
+✅ **Limit File Upload Size & Types**  
+
+---
+
+## 🎯 **Final Summary**
+
+PHP Form Handling **user input গ্রহণ, প্রক্রিয়াকরণ এবং সুরক্ষিতভাবে সংরক্ষণের জন্য অপরিহার্য।** 
+
+✅ **Key Features**:
+- `GET` এবং `POST` method ব্যবহারের নিয়ম।
+- **Form Validation** এর জন্য `empty()`, `filter_var()`, `htmlspecialchars()`।
+- **Security Measures** (XSS, SQL Injection, CSRF প্রতিরোধ)।
+- **File Uploading** এবং **Validation**।
+
+
+<div align="right">
+    <b><a href="#php-course-in-bangla">⬆️ Go to Top</a></b>
+</div>
+
+# Chapter-18: 📋 PHP Form Validation
+
+PHP **Form Validation** হলো **user input verification & sanitization** করার একটি প্রক্রিয়া, যা **security vulnerabilities** প্রতিরোধ করতে সাহায্য করে। এটি **required fields check, data format validation, এবং malicious input filtering** এর জন্য ব্যবহৃত হয়।
+
+---
+
+## **Table of Contents**
+1. [What is PHP Form Validation?](#what-is-php-form-validation)
+2. [Why Form Validation is Important?](#why-form-validation-is-important)
+3. [Types of Form Validation](#types-of-form-validation)
+4. [Basic PHP Form Validation](#basic-php-form-validation)
+5. [PHP Form Validation with Examples](#php-form-validation-with-examples)
+   - [1. Required Fields](#1-required-fields)
+   - [2. String Length Validation](#2-string-length-validation)
+   - [3. Email Validation](#3-email-validation)
+   - [4. Number Validation](#4-number-validation)
+   - [5. URL Validation](#5-url-validation)
+   - [6. Custom Regex Validation](#6-custom-regex-validation)
+6. [Sanitizing User Input](#sanitizing-user-input)
+7. [Complete PHP Form with Validation](#complete-php-form-with-validation)
+8. [Best Practices](#best-practices)
+
+---
+
+## 1️⃣ **What is PHP Form Validation?**
+
+PHP **Form Validation** হলো একটি **input verification process**, যেখানে **user input চেক করে নিশ্চিত করা হয় যে তা সঠিক, নিরাপদ এবং নির্দিষ্ট format অনুসরণ করে।**
+
+✅ **Example Use Cases:**
+- **Name field** খালি থাকলে error message দেখানো।
+- **Email field** এর format `user@example.com` না হলে error।
+- **Phone number** শুধুমাত্র সংখ্যা গ্রহণ করা।
+
+---
+
+## 2️⃣ **Why Form Validation is Important?**
+
+🔹 **Security Risks প্রতিরোধ:** SQL Injection, XSS, CSRF প্রতিরোধ করা।  
+🔹 **User-Friendly Experience:** ভুল ইনপুটে error message দেখানো।  
+🔹 **Correct Data Storage:** Database এ সঠিক data store করা।  
+
+---
+
+## 3️⃣ **Types of Form Validation**
+
+| Validation Type | Description |
+|----------------|------------|
+| **Client-Side Validation** | JavaScript ব্যবহার করে form validate করা হয় (user experience ভালো হয়, কিন্তু নিরাপত্তার জন্য যথেষ্ট নয়)। |
+| **Server-Side Validation** | PHP ব্যবহার করে validation করা হয় (সবচেয়ে নিরাপদ)। |
+
+✅ **Best Practice:**  
+- **Client-side validation** ব্যবহার করুন **better user experience** এর জন্য।  
+- **Server-side validation** ব্যবহার করুন **security & accuracy** নিশ্চিত করার জন্য।
+
+---
+
+## 4️⃣ **Basic PHP Form Validation**
+
+✅ **Form Submission Checking:**
+```php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Validation logic here
+}
+```
+
+✅ **Required Field Validation:**
+```php
+if (empty($_POST["name"])) {
+    echo "Name is required!";
+}
+```
+
+✅ **Sanitization:**
+```php
+$name = htmlspecialchars($_POST["name"]);
+$email = filter_var($_POST["email"], FILTER_SANITIZE_EMAIL);
+```
+
+---
+
+## 5️⃣ **PHP Form Validation with Examples**
+
+---
+
+### **1. Required Fields**
+**Check if a field is empty:**
+```php
+if (empty($_POST["name"])) {
+    $nameErr = "Name is required";
+}
+```
+
+✅ **Full Example:**
+```php
+<?php
+$nameErr = "";
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (empty($_POST["name"])) {
+        $nameErr = "Name is required";
+    }
+}
+?>
+<form method="post">
+  Name: <input type="text" name="name">
+  <span><?php echo $nameErr; ?></span><br>
+  <input type="submit">
+</form>
+```
+
+---
+
+### **2. String Length Validation**
+**Minimum এবং maximum character limit check করা।**
+```php
+$name = $_POST["name"];
+if (strlen($name) < 3 || strlen($name) > 50) {
+    echo "Name must be between 3 to 50 characters.";
+}
+```
+
+---
+
+### **3. Email Validation**
+```php
+if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
+    echo "Invalid email format!";
+}
+```
+
+✅ **Full Example:**
+```php
+$email = $_POST["email"];
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    echo "Invalid email format!";
+} else {
+    echo "Valid email!";
+}
+```
+
+---
+
+### **4. Number Validation**
+```php
+if (!filter_var($_POST["age"], FILTER_VALIDATE_INT)) {
+    echo "Age must be a valid number!";
+}
+```
+
+✅ **Full Example:**
+```php
+$age = $_POST["age"];
+if (filter_var($age, FILTER_VALIDATE_INT) === false) {
+    echo "Invalid age!";
+}
+```
+
+---
+
+### **5. URL Validation**
+```php
+if (!filter_var($_POST["website"], FILTER_VALIDATE_URL)) {
+    echo "Invalid URL!";
+}
+```
+
+✅ **Full Example:**
+```php
+$website = $_POST["website"];
+if (!filter_var($website, FILTER_VALIDATE_URL)) {
+    echo "Invalid URL!";
+}
+```
+
+---
+
+### **6. Custom Regex Validation**
+```php
+if (!preg_match("/^[a-zA-Z-' ]*$/", $_POST["name"])) {
+    echo "Only letters and white spaces allowed!";
+}
+```
+
+✅ **Full Example:**
+```php
+$name = $_POST["name"];
+if (!preg_match("/^[a-zA-Z-' ]*$/", $name)) {
+    echo "Only letters and white spaces allowed!";
+}
+```
+
+---
+
+## 6️⃣ **Sanitizing User Input**
+
+Sanitization হলো **unwanted characters remove করে input clean করা**।
+
+✅ **Example:**
+```php
+$name = htmlspecialchars($_POST["name"]);  // XSS Protection
+$email = filter_var($_POST["email"], FILTER_SANITIZE_EMAIL);
+$url = filter_var($_POST["website"], FILTER_SANITIZE_URL);
+```
+
+---
+
+## 7️⃣ **Complete PHP Form with Validation**
+
+```php
+<?php
+$nameErr = $emailErr = $ageErr = "";
+$name = $email = $age = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (empty($_POST["name"])) {
+        $nameErr = "Name is required";
+    } elseif (!preg_match("/^[a-zA-Z-' ]*$/", $_POST["name"])) {
+        $nameErr = "Only letters and white spaces allowed";
+    } else {
+        $name = htmlspecialchars($_POST["name"]);
+    }
+
+    if (empty($_POST["email"])) {
+        $emailErr = "Email is required";
+    } elseif (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
+        $emailErr = "Invalid email format";
+    } else {
+        $email = filter_var($_POST["email"], FILTER_SANITIZE_EMAIL);
+    }
+
+    if (empty($_POST["age"])) {
+        $ageErr = "Age is required";
+    } elseif (!filter_var($_POST["age"], FILTER_VALIDATE_INT)) {
+        $ageErr = "Age must be a number";
+    } else {
+        $age = filter_var($_POST["age"], FILTER_SANITIZE_NUMBER_INT);
+    }
+}
+?>
+
+<form method="post">
+  Name: <input type="text" name="name">
+  <span><?php echo $nameErr; ?></span><br><br>
+  
+  Email: <input type="email" name="email">
+  <span><?php echo $emailErr; ?></span><br><br>
+  
+  Age: <input type="text" name="age">
+  <span><?php echo $ageErr; ?></span><br><br>
+  
+  <input type="submit" value="Submit">
+</form>
+```
+
+---
+
+## 8️⃣ **Best Practices**
+
+✅ **Use `htmlspecialchars()` for XSS Protection**  
+✅ **Use `filter_var()` for Input Validation**  
+✅ **Use Prepared Statements for Database Input**  
+✅ **Always Validate on Server-Side**  
+✅ **Never Trust User Input**  
+
+---
+
+## 🎯 **Final Summary**
+
+PHP Form Validation **user input clean, validate এবং নিরাপদে প্রক্রিয়াকরণ করতে সাহায্য করে।** 
+
+🔹 **Key Features:**
+- `empty()`, `filter_var()`, এবং `preg_match()` ব্যবহার করে validation।
+- `htmlspecialchars()` ব্যবহার করে XSS প্রতিরোধ।
+- **Server-side validation** নিশ্চিত করা।
+- **Sanitization techniques** ব্যবহার করে input secure করা।
+
+<div align="right">
+    <b><a href="#php-course-in-bangla">⬆️ Go to Top</a></b>
+</div>
+
+# Chapter-19: 📋 PHP Form Required Fields Validation
+
+PHP তে **Form Required Fields Validation** হলো এমন একটি process যা **user input check করে নিশ্চিত করে যে কোনো field খালি নেই।** এটি সাধারণত **form submission এর আগে data validate করার জন্য ব্যবহৃত হয়।**  
+
+---
+
+## **Table of Contents**
+1. [What is PHP Required Field Validation?](#what-is-php-required-field-validation)  
+2. [Why Required Fields Validation is Important?](#why-required-fields-validation-is-important)  
+3. [Basic Required Field Validation](#basic-required-field-validation)  
+4. [Complete PHP Form with Required Fields](#complete-php-form-with-required-fields)  
+5. [Adding More Validations](#adding-more-validations)  
+6. [Sanitizing User Input](#sanitizing-user-input)  
+7. [Best Practices](#best-practices)  
+
+---
+
+## 1️⃣ **What is PHP Required Field Validation?**  
+
+PHP তে **Required Field Validation** হলো এমন একটি প্রক্রিয়া যেখানে **form submission এর সময় check করা হয় যে, user সকল প্রয়োজনীয় তথ্য প্রদান করেছে কিনা।**  
+
+✅ **Example Use Cases:**
+- **Name field খালি রাখা যাবে না।**  
+- **Email field ফাঁকা থাকলে error দেখাতে হবে।**  
+- **Password field অবশ্যই পূরণ করতে হবে।**  
+
+---
+
+## 2️⃣ **Why Required Fields Validation is Important?**  
+
+🔹 **User Experience উন্নত করা**: ভুল input এর জন্য error message দেখিয়ে guide করা।  
+🔹 **Security বৃদ্ধি করা**: Unwanted input insert হওয়া প্রতিরোধ করা।  
+🔹 **Correct Data Collection নিশ্চিত করা**: Form এর প্রয়োজনীয় তথ্য পূরণ নিশ্চিত করা।  
+
+---
+
+## 3️⃣ **Basic Required Field Validation**  
+
+✅ **Basic Example (Single Required Field Validation):**  
+```php
+<?php
+$nameErr = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (empty($_POST["name"])) {
+        $nameErr = "Name is required!";
+    }
+}
+?>
+
+<form method="post">
+  Name: <input type="text" name="name">
+  <span><?php echo $nameErr; ?></span><br>
+  <input type="submit">
+</form>
+```
+
+🔹 **Explanation:**  
+1. `empty($_POST["name"])` দ্বারা check করা হয় যে input দেওয়া হয়েছে কিনা।  
+2. যদি **name field খালি থাকে**, তাহলে `$nameErr` এ error message store হয়।  
+3. **Error message form field এর পাশে দেখানো হয়।**  
+
+---
+
+## 4️⃣ **Complete PHP Form with Required Fields**  
+
+✅ **Example: Required Validation for Name, Email, and Age**  
+```php
+<?php
+$nameErr = $emailErr = $ageErr = "";
+$name = $email = $age = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (empty($_POST["name"])) {
+        $nameErr = "Name is required!";
+    } else {
+        $name = htmlspecialchars($_POST["name"]);
+    }
+
+    if (empty($_POST["email"])) {
+        $emailErr = "Email is required!";
+    } else {
+        $email = htmlspecialchars($_POST["email"]);
+    }
+
+    if (empty($_POST["age"])) {
+        $ageErr = "Age is required!";
+    } else {
+        $age = htmlspecialchars($_POST["age"]);
+    }
+}
+?>
+
+<form method="post">
+  Name: <input type="text" name="name">
+  <span><?php echo $nameErr; ?></span><br><br>
+
+  Email: <input type="email" name="email">
+  <span><?php echo $emailErr; ?></span><br><br>
+
+  Age: <input type="text" name="age">
+  <span><?php echo $ageErr; ?></span><br><br>
+
+  <input type="submit">
+</form>
+```
+
+✅ **Explanation:**  
+- **3টি field (Name, Email, Age) required করা হয়েছে।**  
+- **Error message field এর পাশে দেখানো হবে।**  
+- **User input `htmlspecialchars()` দিয়ে sanitize করা হয়েছে।**  
+
+---
+
+## 5️⃣ **Adding More Validations**  
+
+### ✅ **1. Email Validation**
+```php
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    $emailErr = "Invalid email format!";
+}
+```
+
+### ✅ **2. Number Validation**
+```php
+if (!filter_var($age, FILTER_VALIDATE_INT)) {
+    $ageErr = "Age must be a number!";
+}
+```
+
+### ✅ **3. String Length Validation**
+```php
+if (strlen($name) < 3 || strlen($name) > 50) {
+    $nameErr = "Name must be between 3 to 50 characters.";
+}
+```
+
+✅ **Full Example with Multiple Validations:**
+```php
+<?php
+$nameErr = $emailErr = $ageErr = "";
+$name = $email = $age = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (empty($_POST["name"])) {
+        $nameErr = "Name is required!";
+    } elseif (strlen($_POST["name"]) < 3 || strlen($_POST["name"]) > 50) {
+        $nameErr = "Name must be between 3 to 50 characters.";
+    } else {
+        $name = htmlspecialchars($_POST["name"]);
+    }
+
+    if (empty($_POST["email"])) {
+        $emailErr = "Email is required!";
+    } elseif (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
+        $emailErr = "Invalid email format!";
+    } else {
+        $email = htmlspecialchars($_POST["email"]);
+    }
+
+    if (empty($_POST["age"])) {
+        $ageErr = "Age is required!";
+    } elseif (!filter_var($_POST["age"], FILTER_VALIDATE_INT)) {
+        $ageErr = "Age must be a number!";
+    } else {
+        $age = htmlspecialchars($_POST["age"]);
+    }
+}
+?>
+
+<form method="post">
+  Name: <input type="text" name="name">
+  <span><?php echo $nameErr; ?></span><br><br>
+
+  Email: <input type="email" name="email">
+  <span><?php echo $emailErr; ?></span><br><br>
+
+  Age: <input type="text" name="age">
+  <span><?php echo $ageErr; ?></span><br><br>
+
+  <input type="submit">
+</form>
+```
+
+---
+
+## 6️⃣ **Sanitizing User Input**  
+
+🔹 **Form Input Clean করার জন্য `htmlspecialchars()` ব্যবহার করা হয়।**  
+🔹 **SQL Injection, XSS Attack প্রতিরোধে এটি গুরুত্বপূর্ণ।**  
+
+✅ **Sanitization Example:**  
+```php
+$name = htmlspecialchars($_POST["name"]); // Prevents XSS
+$email = filter_var($_POST["email"], FILTER_SANITIZE_EMAIL);
+$age = filter_var($_POST["age"], FILTER_SANITIZE_NUMBER_INT);
+```
+
+✅ **Security Tips:**  
+- **User input database-এ insert করার আগে sanitize করুন।**  
+- **SQL Injection থেকে বাঁচতে prepared statements ব্যবহার করুন।**  
+
+---
+
+## 7️⃣ **Best Practices**  
+
+✅ **Use `htmlspecialchars()` for XSS Protection**  
+✅ **Use `filter_var()` for Input Validation**  
+✅ **Use `empty()` to Check Required Fields**  
+✅ **Always Validate on Server-Side**  
+✅ **Never Trust User Input**  
+
+---
+
+## 🎯 **Final Summary**  
+
+PHP **Required Fields Validation** নিশ্চিত করে যে, **user form submission এর সময় সকল প্রয়োজনীয় তথ্য প্রদান করেছে কিনা।**  
+
+🔹 **Key Features:**
+- `empty()` ব্যবহার করে required fields check।
+- `htmlspecialchars()` এবং `filter_var()` ব্যবহার করে input clean করা।
+- **Error messages** দেখিয়ে user কে guide করা।
+- **Security vulnerabilities প্রতিরোধ করা।**
+
+
+
+<div align="right">
+    <b><a href="#php-course-in-bangla">⬆️ Go to Top</a></b>
+</div>
+
+# Chapter-20: 📋 PHP Forms - Validate E-mail and URL  
+
+PHP তে **E-mail এবং URL Validation** হলো একটি গুরুত্বপূর্ণ প্রক্রিয়া, যা **user input validation, security, এবং data accuracy** নিশ্চিত করতে সাহায্য করে।  
+
+---
+
+## **Table of Contents**
+1. [Why Validate E-mail and URL in PHP?](#why-validate-e-mail-and-url-in-php)  
+2. [PHP Built-in Validation Functions](#php-built-in-validation-functions)  
+3. [E-mail Validation in PHP](#e-mail-validation-in-php)  
+4. [URL Validation in PHP](#url-validation-in-php)  
+5. [Complete PHP Form with E-mail and URL Validation](#complete-php-form-with-e-mail-and-url-validation)  
+6. [Sanitizing User Input](#sanitizing-user-input)  
+7. [Best Practices](#best-practices)  
+
+---
+
+## 1️⃣ **Why Validate E-mail and URL in PHP?**  
+
+✅ **Security**:  
+- Malicious input থেকে সুরক্ষা পাওয়া যায়।  
+- **SQL Injection & XSS Attack** প্রতিরোধ করা যায়।  
+
+✅ **Data Accuracy**:  
+- User সঠিক **E-mail** এবং **Website URL** দিয়েছে কিনা তা নিশ্চিত করা হয়।  
+
+✅ **Error Handling**:  
+- ভুল ডাটা দিলে **error message** দেখানো হয়।  
+
+---
+
+## 2️⃣ **PHP Built-in Validation Functions**  
+
+PHP তে **E-mail এবং URL Validation** করার জন্য দুটি **built-in function** রয়েছে:  
+
+| Function | Description |
+|----------|-------------|
+| `filter_var($email, FILTER_VALIDATE_EMAIL)` | Valid E-mail কিনা তা চেক করে। |
+| `filter_var($url, FILTER_VALIDATE_URL)` | Valid URL কিনা তা চেক করে। |
+
+---
+
+## 3️⃣ **E-mail Validation in PHP**  
+
+🔹 **E-mail Validation করার জন্য `filter_var()` ব্যবহার করা হয়।**  
+
+✅ **Example: Basic E-mail Validation**  
+```php
+<?php
+$email = "user@example.com";
+
+if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    echo "Valid E-mail Address!";
+} else {
+    echo "Invalid E-mail Address!";
+}
+?>
+```
+
+✅ **Explanation:**  
+- **`FILTER_VALIDATE_EMAIL`** check করে E-mail valid format এ আছে কিনা।  
+
+🔹 **Invalid E-mail Format:**  
+❌ `"user@@example.com"`  
+❌ `"user.example.com"`  
+❌ `"user@.com"`  
+
+---
+
+## 4️⃣ **URL Validation in PHP**  
+
+🔹 **Valid URL চেক করতে `filter_var($url, FILTER_VALIDATE_URL)` ব্যবহার করা হয়।**  
+
+✅ **Example: Basic URL Validation**  
+```php
+<?php
+$url = "https://www.example.com";
+
+if (filter_var($url, FILTER_VALIDATE_URL)) {
+    echo "Valid URL!";
+} else {
+    echo "Invalid URL!";
+}
+?>
+```
+
+✅ **Explanation:**  
+- **`FILTER_VALIDATE_URL`** check করে URL এর format সঠিক কিনা।  
+
+🔹 **Invalid URL Format:**  
+❌ `"www.example"`  
+❌ `"http:/example.com"`  
+❌ `"example"`  
+
+---
+
+## 5️⃣ **Complete PHP Form with E-mail and URL Validation**  
+
+🔹 **এই form এ user কে E-mail এবং Website URL দিতে হবে, এবং তা validate করা হবে।**  
+
+✅ **Full Example:**  
+```php
+<?php
+$emailErr = $urlErr = "";
+$email = $url = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Email Validation
+    if (empty($_POST["email"])) {
+        $emailErr = "E-mail is required!";
+    } elseif (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
+        $emailErr = "Invalid E-mail format!";
+    } else {
+        $email = htmlspecialchars($_POST["email"]);
+    }
+
+    // URL Validation
+    if (empty($_POST["url"])) {
+        $urlErr = "Website URL is required!";
+    } elseif (!filter_var($_POST["url"], FILTER_VALIDATE_URL)) {
+        $urlErr = "Invalid URL format!";
+    } else {
+        $url = htmlspecialchars($_POST["url"]);
+    }
+}
+?>
+
+<form method="post">
+  E-mail: <input type="text" name="email">
+  <span><?php echo $emailErr; ?></span><br><br>
+
+  Website URL: <input type="text" name="url">
+  <span><?php echo $urlErr; ?></span><br><br>
+
+  <input type="submit">
+</form>
+```
+
+✅ **Explanation:**  
+- **Empty Check**: `empty($_POST["email"])` এবং `empty($_POST["url"])` চেক করে যে user data দিয়েছে কিনা।  
+- **Validation Check**: `filter_var()` দিয়ে E-mail & URL validate করা হচ্ছে।  
+- **Error Message**: ভুল হলে **error message** দেখানো হচ্ছে।  
+
+---
+
+## 6️⃣ **Sanitizing User Input**  
+
+🔹 **Sanitization ব্যবহার করা হয় Malicious Input & XSS Attack প্রতিরোধের জন্য।**  
+
+✅ **Sanitization Example:**  
+```php
+$email = filter_var($_POST["email"], FILTER_SANITIZE_EMAIL);
+$url = filter_var($_POST["url"], FILTER_SANITIZE_URL);
+```
+
+✅ **Explanation:**  
+- **`FILTER_SANITIZE_EMAIL`** → Unwanted characters remove করে।  
+- **`FILTER_SANITIZE_URL`** → Invalid characters remove করে।  
+
+---
+
+## 7️⃣ **Best Practices**  
+
+✅ **Always Use `filter_var()` for Validation**  
+✅ **Use `htmlspecialchars()` to Prevent XSS Attacks**  
+✅ **Always Validate Input Before Processing**  
+✅ **Provide User-Friendly Error Messages**  
+
+---
+
+## 🎯 **Final Summary**  
+
+PHP তে **E-mail এবং URL Validation** ব্যবহার করে **user input check এবং sanitize** করা হয়।  
+
+🔹 **Key Features:**  
+- **E-mail Validation:** `filter_var($email, FILTER_VALIDATE_EMAIL)`  
+- **URL Validation:** `filter_var($url, FILTER_VALIDATE_URL)`  
+- **Sanitization:** `FILTER_SANITIZE_EMAIL`, `FILTER_SANITIZE_URL`  
+- **Security Measures:** `htmlspecialchars()`, Proper Input Handling  
+
+<div align="right">
+    <b><a href="#php-course-in-bangla">⬆️ Go to Top</a></b>
+</div>
+
+# Chapter-21: 📅 PHP Date and Time
+
+PHP তে **Date এবং Time** পরিচালনা করার জন্য বিভিন্ন **built-in functions** রয়েছে, যা সময় গণনা, format পরিবর্তন, এবং timezone management করতে সাহায্য করে।  
+
+---
+
+## **Table of Contents**  
+1. [Why Use PHP Date and Time?](#why-use-php-date-and-time)  
+2. [PHP `date()` Function](#php-date-function)  
+3. [PHP `time()` Function](#php-time-function)  
+4. [Working with Timezones](#working-with-timezones)  
+5. [Formatting Date and Time](#formatting-date-and-time)  
+6. [PHP `strtotime()` Function](#php-strtotime-function)  
+7. [Working with `DateTime` Class](#working-with-datetime-class)  
+8. [Best Practices](#best-practices)  
+
+---
+
+## 1️⃣ **Why Use PHP Date and Time?**  
+
+✅ **Dynamic Web Applications:** User activity log, scheduled events, এবং reminders তৈরি করতে সাহায্য করে।  
+✅ **Database Integration:** Record timestamps সংরক্ষণ ও সঠিক data tracking করতে সাহায্য করে।  
+✅ **Time-based Calculations:** Payment systems, booking, এবং expiration dates পরিচালনা করা যায়।  
+
+---
+
+## 2️⃣ **PHP `date()` Function**  
+
+PHP তে **`date()` function** ব্যবহার করে বর্তমান **date এবং time format করা** যায়।  
+
+✅ **Basic Syntax:**  
+```php
+date(format, timestamp);
+```
+- **`format`**: Date এবং Time এর **output format** নির্ধারণ করে।  
+- **`timestamp`** (optional): UNIX timestamp ব্যবহার করা হয়।  
+
+✅ **Example: Current Date and Time**  
+```php
+<?php
+echo date("Y-m-d H:i:s");  // Output: 2024-03-03 14:30:00
+?>
+```
+
+✅ **Common Date Formats:**  
+
+| Format | Description | Example Output |
+|--------|-------------|---------------|
+| `Y` | 4-digit Year | `2024` |
+| `y` | 2-digit Year | `24` |
+| `m` | Month (01-12) | `03` |
+| `d` | Day (01-31) | `03` |
+| `H` | Hour (00-23) | `14` |
+| `i` | Minutes (00-59) | `30` |
+| `s` | Seconds (00-59) | `15` |
+| `l` | Full Day Name | `Sunday` |
+| `F` | Full Month Name | `March` |
+
+✅ **Example: Date Formatting**  
+```php
+<?php
+echo "Today is " . date("l, d F Y");  // Output: Today is Sunday, 03 March 2024
+?>
+```
+
+---
+
+## 3️⃣ **PHP `time()` Function**  
+
+🔹 **`time()` function** বর্তমান সময়ের **Unix Timestamp** (January 1, 1970 থেকে শুরু করে এখন পর্যন্ত **seconds count**) return করে।  
+
+✅ **Example: Get Current Timestamp**  
+```php
+<?php
+echo time();  // Output: 1709461200 (Unix timestamp)
+?>
+```
+
+✅ **Example: Add 1 Hour to Current Time**  
+```php
+<?php
+$new_time = time() + (60 * 60);  // 1 hour later
+echo date("Y-m-d H:i:s", $new_time);
+?>
+```
+
+---
+
+## 4️⃣ **Working with Timezones**  
+
+🔹 PHP তে বিভিন্ন **timezone** সেট করা যায় **date এবং time সঠিকভাবে প্রদর্শনের জন্য**।  
+
+✅ **Set Timezone:**  
+```php
+<?php
+date_default_timezone_set("Asia/Dhaka");
+echo "Current Time: " . date("Y-m-d H:i:s"); 
+?>
+```
+
+✅ **Get Current Timezone:**  
+```php
+<?php
+echo date_default_timezone_get();  // Output: Asia/Dhaka
+?>
+```
+
+✅ **Available Timezones:**  
+```php
+<?php
+print_r(timezone_identifiers_list());  // List all timezones
+?>
+```
+
+---
+
+## 5️⃣ **Formatting Date and Time**  
+
+🔹 PHP তে বিভিন্ন **date & time format** তৈরি করা যায়।  
+
+✅ **Example: Custom Date Format**  
+```php
+<?php
+echo date("d-m-Y");  // Output: 03-03-2024
+echo date("l, F jS, Y");  // Output: Sunday, March 3rd, 2024
+?>
+```
+
+✅ **Example: Custom Time Format**  
+```php
+<?php
+echo date("h:i A");  // Output: 02:30 PM
+?>
+```
+
+---
+
+## 6️⃣ **PHP `strtotime()` Function**  
+
+🔹 **`strtotime()` function** human-readable **date string কে timestamp এ রূপান্তর** করতে সাহায্য করে।  
+
+✅ **Example: Convert Text Date to Timestamp**  
+```php
+<?php
+$timestamp = strtotime("next Sunday");
+echo date("Y-m-d", $timestamp);  // Output: 2024-03-10
+?>
+```
+
+✅ **Example: Add Days to Current Date**  
+```php
+<?php
+echo date("Y-m-d", strtotime("+3 days"));  // Output: 2024-03-06
+?>
+```
+
+✅ **Example: Subtract 2 Weeks from Today**  
+```php
+<?php
+echo date("Y-m-d", strtotime("-2 weeks"));  // Output: 2024-02-18
+?>
+```
+
+---
+
+## 7️⃣ **Working with `DateTime` Class**  
+
+🔹 **PHP `DateTime` class** advanced date and time operations পরিচালনা করতে সাহায্য করে।  
+
+✅ **Example: Get Current DateTime Using `DateTime` Class**  
+```php
+<?php
+$date = new DateTime();
+echo $date->format("Y-m-d H:i:s");
+?>
+```
+
+✅ **Example: Add 5 Days to Current Date**  
+```php
+<?php
+$date = new DateTime();
+$date->modify("+5 days");
+echo $date->format("Y-m-d");
+?>
+```
+
+✅ **Example: Date Difference Calculation**  
+```php
+<?php
+$date1 = new DateTime("2024-03-01");
+$date2 = new DateTime("2024-03-10");
+$diff = $date1->diff($date2);
+echo "Difference: " . $diff->days . " days";  // Output: Difference: 9 days
+?>
+```
+
+---
+
+## 8️⃣ **Best Practices**  
+
+✅ **Use `date_default_timezone_set()`** - সবসময় **timezone set করুন**।  
+✅ **Use `strtotime()` for Date Manipulation** - Future বা past date generate করার জন্য ব্যবহার করুন।  
+✅ **Use `DateTime` Class for Complex Operations** - Date calculations সহজ করতে `DateTime` ব্যবহার করুন।  
+✅ **Store Dates in `YYYY-MM-DD` Format in Database** - Database এর জন্য standard format ব্যবহার করুন।  
+
+---
+
+## 🎯 **Final Summary**  
+
+PHP তে **Date এবং Time Management** করার জন্য **date(), time(), strtotime(), এবং DateTime Class** ব্যবহার করা হয়।  
+
+✅ **Key Functions:**  
+- `date()` → Date & Time format করার জন্য।  
+- `time()` → বর্তমান **timestamp** return করে।  
+- `strtotime()` → **Text Date → Timestamp** এ পরিবর্তন করে।  
+- `DateTime` Class → **Advanced Date Calculations** করতে সাহায্য করে।  
+
+<div align="right">
+    <b><a href="#php-course-in-bangla">⬆️ Go to Top</a></b>
+</div>
+
+# Chapter-22: 📋 PHP Include vs Require
+
+PHP তে **Include Files** ব্যবহার করা হয় **কোড পুনরায় ব্যবহারযোগ্য করা**, **modular programming** করা, এবং **maintenance সহজ করা**। `include` এবং `require` function ব্যবহার করে **একটি PHP ফাইলকে অন্য ফাইলে সংযুক্ত করা যায়**।  
+
+---
+
+## **Table of Contents**
+1. [What is PHP Include Files?](#what-is-php-include-files)  
+2. [Why Use Include Files?](#why-use-include-files)  
+3. [PHP `include` vs `require`](#php-include-vs-require)  
+4. [Using `include` in PHP](#using-include-in-php)  
+5. [Using `require` in PHP](#using-require-in-php)  
+6. [Difference Between `include`, `require`, `include_once`, and `require_once`](#difference-between-include-require-include_once-and-require_once)  
+7. [Best Practices](#best-practices)  
+
+---
+
+## 1️⃣ **What is PHP Include Files?**  
+
+PHP **include files** হল একটি পদ্ধতি, যা ব্যবহার করে **একটি ফাইলকে অন্য ফাইলে সংযুক্ত (import) করা হয়**। এটি সাধারণত **header, footer, database connection, navigation bar ইত্যাদি** আলাদা করে সংরক্ষণ করতে ব্যবহৃত হয়।  
+
+✅ **Example:**  
+```php
+<?php include "header.php"; ?>
+<h1>Welcome to My Website</h1>
+<?php include "footer.php"; ?>
+```
+এখানে `header.php` এবং `footer.php` আলাদা ফাইল হিসেবে সংযুক্ত হয়েছে।
+
+---
+
+## 2️⃣ **Why Use Include Files?**  
+
+🔹 **Code Reusability** – একই কোড বারবার লেখার প্রয়োজন নেই।  
+🔹 **Easier Maintenance** – এক জায়গায় পরিবর্তন করলে, সব পেজে পরিবর্তন হবে।  
+🔹 **Better Code Organization** – ভিন্ন ভিন্ন অংশ আলাদা ফাইলে রাখা যায়।  
+🔹 **Security Improvement** – Database configuration ফাইল আলাদা রেখে **security বৃদ্ধি** করা যায়।  
+
+---
+
+## 3️⃣ **PHP `include` vs `require`**  
+
+| Function | Description | Behavior if File Not Found |
+|----------|------------|---------------------------|
+| `include` | একটি ফাইলকে সংযুক্ত করে এবং **error থাকলেও স্ক্রিপ্ট চালিয়ে যায়।** | Warning দেখায়, কিন্তু script চলতে থাকে। |
+| `require` | ফাইল সংযুক্ত করে, কিন্তু **error হলে স্ক্রিপ্ট বন্ধ হয়ে যায়।** | Fatal Error দেখায় এবং script execution বন্ধ হয়। |
+
+---
+
+## 4️⃣ **Using `include` in PHP**  
+
+🔹 **`include` function ব্যবহার করলে, যদি ফাইল না পাওয়া যায়, তাহলে শুধুমাত্র Warning দেখাবে, কিন্তু script চলতে থাকবে।**  
+
+✅ **Example:**  
+```php
+<?php
+include "header.php";  // Include header file
+?>
+<h1>Welcome to My Website</h1>
+<?php
+include "footer.php";  // Include footer file
+?>
+```
+🔹 **যদি `header.php` ফাইল না থাকে, তাহলে:**  
+```
+Warning: include(header.php): Failed to open stream: No such file or directory
+```
+কিন্তু ওয়েবসাইটের অন্যান্য অংশ ঠিক থাকবে।
+
+---
+
+## 5️⃣ **Using `require` in PHP**  
+
+🔹 **`require` function ব্যবহার করলে, যদি ফাইল না পাওয়া যায়, তাহলে Fatal Error দেখাবে এবং স্ক্রিপ্ট বন্ধ হয়ে যাবে।**  
+
+✅ **Example:**  
+```php
+<?php
+require "header.php";  // Include header file
+?>
+<h1>Welcome to My Website</h1>
+<?php
+require "footer.php";  // Include footer file
+?>
+```
+🔹 **যদি `header.php` ফাইল না থাকে, তাহলে:**  
+```
+Fatal error: require(): Failed opening required 'header.php'
+```
+এবং **পুরো স্ক্রিপ্ট বন্ধ হয়ে যাবে**।
+
+---
+
+## 6️⃣ **Difference Between `include`, `require`, `include_once`, and `require_once`**  
+
+| Function | Description |
+|----------|------------|
+| `include "file.php";` | ফাইলকে সংযুক্ত করে, কিন্তু **ফাইল না থাকলে warning দেয় এবং script চলতে থাকে।** |
+| `require "file.php";` | ফাইলকে সংযুক্ত করে, **ফাইল না থাকলে Fatal Error দেয় এবং script বন্ধ হয়ে যায়।** |
+| `include_once "file.php";` | ফাইলকে একবারই সংযুক্ত করে, **যদি ফাইল আগেই সংযুক্ত থাকে, তাহলে পুনরায় সংযুক্ত করবে না।** |
+| `require_once "file.php";` | ফাইলকে একবারই সংযুক্ত করে, **require এর মতই কাজ করে, কিন্তু ফাইল আগেই সংযুক্ত থাকলে পুনরায় সংযুক্ত করবে না।** |
+
+✅ **Example:**  
+```php
+<?php
+include_once "header.php"; // Only include if not already included
+require_once "config.php"; // Only include if not already included
+?>
+```
+
+---
+
+## 7️⃣ **Best Practices**  
+
+✅ **Use `require` for Important Files**  
+- Database configuration, authentication ইত্যাদির জন্য **`require` ব্যবহার করা উচিৎ।**  
+
+✅ **Use `include` for Optional Files**  
+- **Header, footer, sidebar** এর মত **optional elements** এর জন্য `include` ব্যবহার করুন।  
+
+✅ **Use `include_once` or `require_once` to Avoid Duplicate Includes**  
+- **একই ফাইল একাধিকবার অন্তর্ভুক্ত হওয়া থেকে রক্ষা পেতে `include_once` বা `require_once` ব্যবহার করুন।**  
+
+✅ **Use Full Path for Better Performance**  
+```php
+include $_SERVER['DOCUMENT_ROOT'] . "/includes/header.php";
+```
+
+✅ **Use Error Handling for `include` and `require`**  
+```php
+if (!file_exists("header.php")) {
+    die("Error: File not found!");
+} else {
+    include "header.php";
+}
+```
+
+---
+
+## 🎯 **Final Summary**  
+
+PHP তে **Include Files** ব্যবহার করলে **code reusability**, **better organization**, এবং **maintenance সহজ হয়**।  
+
+🔹 **Key Features:**  
+- **`include`** → Warning দেখায়, কিন্তু script চালিয়ে যায়।  
+- **`require`** → Fatal error দেখায়, এবং script execution বন্ধ করে।  
+- **`include_once` & `require_once`** → **Duplicate file include প্রতিরোধ করে।**  
+- **Security এবং Performance বৃদ্ধি করে।**  
+
+<div align="right">
+    <b><a href="#php-course-in-bangla">⬆️ Go to Top</a></b>
+</div>
+
+# Chapter-23: 📂 PHP File Handling 
+
+PHP তে **File Handling** ব্যবহার করা হয় **files read, write, create, edit, delete** করার জন্য। এটি ওয়েব ডেভেলপমেন্টে **file-based data storage, log management, এবং report generation** করতে ব্যবহৃত হয়।  
+
+---
+
+## **Table of Contents**  
+1. [What is PHP File Handling?](#what-is-php-file-handling)  
+2. [PHP File Handling Functions](#php-file-handling-functions)  
+3. [Opening and Closing Files](#opening-and-closing-files)  
+4. [Reading Files](#reading-files)  
+5. [Writing and Appending to Files](#writing-and-appending-to-files)  
+6. [Deleting Files](#deleting-files)  
+7. [Checking if a File Exists](#checking-if-a-file-exists)  
+8. [Best Practices](#best-practices)  
+
+---
+
+## 1️⃣ **What is PHP File Handling?**  
+
+PHP তে **File Handling** হলো এমন একটি পদ্ধতি, যা ব্যবহার করে **server-side ফাইল তৈরি, পড়া, সম্পাদনা এবং মুছে ফেলা যায়**।  
+
+✅ **Common Use Cases:**  
+- **User-generated content store করা (e.g., logs, reports, notes, etc.)**  
+- **File-based database তৈরি করা**  
+- **Configuration files manage করা**  
+
+---
+
+## 2️⃣ **PHP File Handling Functions**  
+
+| Function | Description |
+|----------|-------------|
+| `fopen()` | ফাইল **খুলতে** বা তৈরি করতে ব্যবহৃত হয়। |
+| `fclose()` | ফাইল **বন্ধ করতে** ব্যবহৃত হয়। |
+| `fread()` | ফাইল থেকে **data পড়তে** ব্যবহৃত হয়। |
+| `fwrite()` | ফাইলে **data লিখতে** ব্যবহৃত হয়। |
+| `file_exists()` | চেক করে ফাইল **আছে কিনা**। |
+| `unlink()` | **ফাইল মুছে ফেলে**। |
+
+✅ **File Open Modes:**  
+
+| Mode | Description |
+|------|-------------|
+| `r` | **Read Only** (ফাইল থাকতে হবে) |
+| `w` | **Write Only** (ফাইল নতুন করে তৈরি হয়, পুরনো data মুছে যাবে) |
+| `a` | **Append Mode** (পুরনো data থাকবে, নতুন data যুক্ত হবে) |
+| `x` | **Create New File** (ফাইল থাকলে error দিবে) |
+
+---
+
+## 3️⃣ **Opening and Closing Files**  
+
+✅ **Example: Open and Close File**  
+```php
+<?php
+$file = fopen("example.txt", "r");  // Open file in read mode
+fclose($file);  // Close the file
+?>
+```
+
+✅ **Error Handling:**  
+```php
+<?php
+$file = fopen("example.txt", "r") or die("Unable to open file!");
+fclose($file);
+?>
+```
+
+---
+
+## 4️⃣ **Reading Files**  
+
+🔹 **PHP তে তিনটি উপায়ে ফাইল পড়া যায়:**  
+
+### ✅ **1. `fread()` - Read a File**  
+```php
+<?php
+$file = fopen("example.txt", "r");
+$content = fread($file, filesize("example.txt"));
+fclose($file);
+echo $content;
+?>
+```
+
+✅ **Explanation:**  
+- `fread($file, filesize("example.txt"))` → পুরো ফাইলের data পড়বে।  
+- `fclose($file)` → ফাইল বন্ধ করবে।  
+
+---
+
+### ✅ **2. `fgets()` - Read Line by Line**  
+```php
+<?php
+$file = fopen("example.txt", "r");
+while (!feof($file)) {
+    echo fgets($file) . "<br>";
+}
+fclose($file);
+?>
+```
+
+✅ **Explanation:**  
+- `fgets()` একবারে **একটি লাইন** পড়ে।  
+- `feof($file)` চেক করে **ফাইলের শেষ (End of File)** এ পৌঁছেছে কিনা।  
+
+---
+
+### ✅ **3. `file_get_contents()` - Read Entire File (Best for Small Files)**  
+```php
+<?php
+$content = file_get_contents("example.txt");
+echo $content;
+?>
+```
+✅ **Why Use `file_get_contents()`?**  
+- এটি **fastest method**, কারণ এটি পুরো ফাইল একবারে মেমোরিতে লোড করে।  
+
+---
+
+## 5️⃣ **Writing and Appending to Files**  
+
+### ✅ **1. `fwrite()` - Write to File (Overwrite Mode)**  
+```php
+<?php
+$file = fopen("example.txt", "w"); // Open file in write mode
+fwrite($file, "Hello, PHP File Handling!");
+fclose($file);
+?>
+```
+✅ **Explanation:**  
+- `w` mode **পুরনো data মুছে ফেলে নতুন data লেখে।**  
+
+---
+
+### ✅ **2. `fwrite()` - Append to File (Keep Old Data)**  
+```php
+<?php
+$file = fopen("example.txt", "a"); // Open file in append mode
+fwrite($file, "New Data Added.\n");
+fclose($file);
+?>
+```
+✅ **Explanation:**  
+- `a` mode **পুরনো data রেখে নতুন data যোগ করে**।  
+
+---
+
+### ✅ **3. `file_put_contents()` - Quick Write to File**  
+```php
+<?php
+file_put_contents("example.txt", "Quick Write Example!");
+?>
+```
+✅ **Why Use `file_put_contents()`?**  
+- এটি `fopen()` এবং `fwrite()` এর সংক্ষিপ্ত এবং সহজ সংস্করণ।  
+
+---
+
+## 6️⃣ **Deleting Files**  
+
+🔹 **PHP তে `unlink()` function ব্যবহার করে ফাইল মুছে ফেলা যায়।**  
+
+✅ **Example: Delete a File**  
+```php
+<?php
+if (file_exists("example.txt")) {
+    unlink("example.txt");
+    echo "File Deleted!";
+} else {
+    echo "File does not exist!";
+}
+?>
+```
+
+✅ **Explanation:**  
+- **`file_exists("example.txt")`** → ফাইল আছে কিনা চেক করে।  
+- **`unlink("example.txt")`** → ফাইল মুছে ফেলে।  
+
+---
+
+## 7️⃣ **Checking if a File Exists**  
+
+✅ **Example: `file_exists()` Function**  
+```php
+<?php
+if (file_exists("example.txt")) {
+    echo "File exists!";
+} else {
+    echo "File not found!";
+}
+?>
+```
+✅ **Use Case:**  
+- **Error Handling** করার জন্য এটি খুব দরকারি।  
+
+---
+
+## 8️⃣ **Best Practices**  
+
+✅ **Always Close the File**  
+```php
+$file = fopen("example.txt", "r");
+// File operations here
+fclose($file);
+```
+
+✅ **Check if File Exists Before Reading/Writing**  
+```php
+if (file_exists("example.txt")) {
+    $content = file_get_contents("example.txt");
+}
+```
+
+✅ **Use `file_put_contents()` for Quick Writes**  
+```php
+file_put_contents("log.txt", "New log entry\n", FILE_APPEND);
+```
+
+✅ **Use `unlink()` to Delete Files Securely**  
+```php
+if (file_exists("old_file.txt")) {
+    unlink("old_file.txt");
+}
+```
+
+✅ **Use `try-catch` for Better Error Handling**  
+```php
+try {
+    $file = fopen("data.txt", "r");
+    if (!$file) {
+        throw new Exception("File not found!");
+    }
+    fclose($file);
+} catch (Exception $e) {
+    echo "Error: " . $e->getMessage();
+}
+```
+
+---
+
+## 🎯 **Final Summary**  
+
+PHP তে **File Handling** ব্যবহার করে **ফাইল তৈরি, পড়া, লেখা, এবং মুছে ফেলা** যায়।  
+
+✅ **Key Functions:**  
+- **`fopen()`** - ফাইল খোলে।  
+- **`fclose()`** - ফাইল বন্ধ করে।  
+- **`fread()` & `fgets()`** - ফাইল থেকে **data পড়ে**।  
+- **`fwrite()` & `file_put_contents()`** - ফাইলে **data লিখে**।  
+- **`unlink()`** - **ফাইল মুছে ফেলে**।  
+
+
+<div align="right">
+    <b><a href="#php-course-in-bangla">⬆️ Go to Top</a></b>
+</div>
+
+# Chapter-24: 📤 PHP File Upload
+
+PHP তে **File Upload** ব্যবহার করা হয় **user-generated content, profile pictures, documents, এবং অন্যান্য media files upload** করার জন্য। এটি **HTML forms এবং PHP scripts** এর মাধ্যমে পরিচালিত হয়।  
+
+---
+
+## **Table of Contents**  
+1. [What is PHP File Upload?](#what-is-php-file-upload)  
+2. [PHP File Upload Basics](#php-file-upload-basics)  
+3. [Creating an HTML File Upload Form](#creating-an-html-file-upload-form)  
+4. [Handling File Upload in PHP](#handling-file-upload-in-php)  
+5. [File Validation (Size, Type, and Security)](#file-validation-size-type-and-security)  
+6. [Restricting File Types](#restricting-file-types)  
+7. [Limiting File Size](#limiting-file-size)  
+8. [Saving the Uploaded File](#saving-the-uploaded-file)  
+9. [Best Practices](#best-practices)  
+
+---
+
+## 1️⃣ **What is PHP File Upload?**  
+
+PHP তে **file upload** করার মাধ্যমে users **images, documents, এবং অন্যান্য media files server-এ পাঠাতে পারে**।  
+
+✅ **Use Cases:**  
+- Profile picture upload  
+- Resume বা document submission  
+- Image gallery management  
+
+✅ **Required Components:**  
+1. **HTML Form (`<input type="file">`)**  
+2. **PHP Script (`$_FILES` Superglobal)**  
+3. **File Validation (Size, Type, Security)**  
+4. **Move Uploaded File (`move_uploaded_file()`)**  
+
+---
+
+## 2️⃣ **PHP File Upload Basics**  
+
+🔹 **`$_FILES` Superglobal**  
+PHP তে **uploaded files handle করার জন্য** `$_FILES` একটি built-in **associative array**।  
+
+✅ **Structure of `$_FILES` Array:**  
+```php
+$_FILES["file"]["name"];      // Original file name
+$_FILES["file"]["tmp_name"];  // Temporary file location
+$_FILES["file"]["size"];      // File size in bytes
+$_FILES["file"]["type"];      // File MIME type
+$_FILES["file"]["error"];     // Error code (if any)
+```
+
+---
+
+## 3️⃣ **Creating an HTML File Upload Form**  
+
+✅ **Example: Simple File Upload Form**  
+```html
+<form action="upload.php" method="post" enctype="multipart/form-data">
+  Select File: <input type="file" name="file">
+  <input type="submit" value="Upload">
+</form>
+```
+✅ **Explanation:**  
+- `enctype="multipart/form-data"` **(required)** → File upload করতে ব্যবহার করা হয়।  
+- `input type="file"` → File select করার জন্য।  
+- `action="upload.php"` → **PHP script যেখানে file upload হবে।**  
+
+---
+
+## 4️⃣ **Handling File Upload in PHP**  
+
+✅ **Example: Basic File Upload Handling (`upload.php`)**  
+```php
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (isset($_FILES["file"]) && $_FILES["file"]["error"] == 0) {
+        $file_name = $_FILES["file"]["name"];
+        $temp_name = $_FILES["file"]["tmp_name"];
+        $upload_dir = "uploads/";
+
+        // Move file to upload directory
+        if (move_uploaded_file($temp_name, $upload_dir . $file_name)) {
+            echo "File uploaded successfully!";
+        } else {
+            echo "Error uploading file!";
+        }
+    } else {
+        echo "No file selected or an error occurred!";
+    }
+}
+?>
+```
+✅ **Explanation:**  
+1. **Check if a file is uploaded** → `isset($_FILES["file"])`  
+2. **Check for errors** → `$_FILES["file"]["error"] == 0`  
+3. **Move file to permanent directory** → `move_uploaded_file()`  
+
+---
+
+## 5️⃣ **File Validation (Size, Type, and Security)**  
+
+### ✅ **1. Restricting File Types**  
+```php
+$allowed_types = array("jpg", "jpeg", "png", "gif");
+$file_ext = strtolower(pathinfo($_FILES["file"]["name"], PATHINFO_EXTENSION));
+
+if (!in_array($file_ext, $allowed_types)) {
+    die("Invalid file type!");
+}
+```
+
+---
+
+### ✅ **2. Limiting File Size**  
+```php
+$max_size = 2 * 1024 * 1024; // 2MB
+if ($_FILES["file"]["size"] > $max_size) {
+    die("File size exceeds 2MB limit!");
+}
+```
+
+---
+
+### ✅ **3. Preventing File Overwrite**  
+```php
+$unique_name = uniqid() . "-" . basename($_FILES["file"]["name"]);
+move_uploaded_file($_FILES["file"]["tmp_name"], "uploads/" . $unique_name);
+```
+🔹 **Explanation:**  
+- `uniqid()` ব্যবহার করে প্রতিটি ফাইলকে **একটি unique name** দেওয়া হয়।  
+
+---
+
+## 6️⃣ **Restricting File Types**  
+
+✅ **Allowed File Types Example:**  
+```php
+$allowed_types = array("jpg", "jpeg", "png", "pdf");
+$file_ext = strtolower(pathinfo($_FILES["file"]["name"], PATHINFO_EXTENSION));
+
+if (!in_array($file_ext, $allowed_types)) {
+    die("Invalid file format! Only JPG, PNG, and PDF allowed.");
+}
+```
+
+---
+
+## 7️⃣ **Limiting File Size**  
+
+✅ **Example: Restricting File Size to 5MB**  
+```php
+$max_size = 5 * 1024 * 1024; // 5MB
+if ($_FILES["file"]["size"] > $max_size) {
+    die("File too large! Maximum 5MB allowed.");
+}
+```
+
+---
+
+## 8️⃣ **Saving the Uploaded File**  
+
+✅ **Example: Move File to `uploads/` Folder**  
+```php
+$upload_dir = "uploads/";
+$file_name = basename($_FILES["file"]["name"]);
+$target_file = $upload_dir . $file_name;
+
+if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
+    echo "File uploaded to " . $target_file;
+} else {
+    echo "Error uploading file.";
+}
+```
+
+✅ **Create `uploads/` Directory if Not Exists:**  
+```php
+if (!is_dir("uploads")) {
+    mkdir("uploads", 0777, true);
+}
+```
+
+---
+
+## 🛠 **Complete PHP File Upload Code with Validation**  
+
+```php
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $upload_dir = "uploads/";
+    $allowed_types = array("jpg", "jpeg", "png", "pdf");
+    $max_size = 5 * 1024 * 1024; // 5MB
+
+    if (!is_dir($upload_dir)) {
+        mkdir($upload_dir, 0777, true);
+    }
+
+    if (isset($_FILES["file"]) && $_FILES["file"]["error"] == 0) {
+        $file_name = $_FILES["file"]["name"];
+        $file_tmp = $_FILES["file"]["tmp_name"];
+        $file_size = $_FILES["file"]["size"];
+        $file_ext = strtolower(pathinfo($file_name, PATHINFO_EXTENSION));
+
+        if (!in_array($file_ext, $allowed_types)) {
+            die("Invalid file type!");
+        }
+
+        if ($file_size > $max_size) {
+            die("File too large! Maximum 5MB allowed.");
+        }
+
+        $new_name = uniqid() . "-" . $file_name;
+        $target_file = $upload_dir . $new_name;
+
+        if (move_uploaded_file($file_tmp, $target_file)) {
+            echo "File uploaded successfully: " . $new_name;
+        } else {
+            echo "Error uploading file!";
+        }
+    } else {
+        echo "No file uploaded!";
+    }
+}
+?>
+```
+
+---
+
+## 9️⃣ **Best Practices**  
+
+✅ **Use `uniqid()` to Avoid File Overwriting**  
+✅ **Validate File Type and Size Before Uploading**  
+✅ **Restrict File Types to Prevent Security Issues**  
+✅ **Use `move_uploaded_file()` to Prevent Arbitrary File Execution**  
+✅ **Ensure `uploads/` Directory Exists Before Uploading**  
+
+---
+
+## 🎯 **Final Summary**  
+
+PHP তে **File Uploading** এর মাধ্যমে **user-generated content handle করা সহজ**।  
+
+🔹 **Key Features:**  
+- **HTML Form (`<input type="file">`)**  
+- **PHP Script (`$_FILES`)**  
+- **File Validation (Size, Type, Name)**  
+- **Secure Upload (`move_uploaded_file()`)**  
+
+<div align="right">
+    <b><a href="#php-course-in-bangla">⬆️ Go to Top</a></b>
+</div>
+
+# Chapter-25: 🍪 PHP Cookies
+
+PHP **Cookies** হলো **client-side storage mechanism**, যা ব্যবহারকারীর ব্রাউজারে ছোট **data store** করতে সাহায্য করে। এটি সাধারণত **user preferences, authentication, এবং session tracking** এর জন্য ব্যবহৃত হয়।
+
+---
+
+## **Table of Contents**
+1. [What are PHP Cookies?](#what-are-php-cookies)  
+2. [Why Use Cookies?](#why-use-cookies)  
+3. [Creating Cookies in PHP](#creating-cookies-in-php)  
+4. [Retrieving Cookies in PHP](#retrieving-cookies-in-php)  
+5. [Updating Cookies in PHP](#updating-cookies-in-php)  
+6. [Deleting Cookies in PHP](#deleting-cookies-in-php)  
+7. [Setting Expiration Time for Cookies](#setting-expiration-time-for-cookies)  
+8. [Secure Cookie Handling](#secure-cookie-handling)  
+9. [Best Practices](#best-practices)  
+
+---
+
+## 1️⃣ **What are PHP Cookies?**  
+
+✅ **PHP Cookies** হল **small pieces of data** যা **user's browser-এ সংরক্ষণ** করা হয় এবং **server-এ প্রতিবার request পাঠানোর সময় প্রেরণ** করা হয়।  
+
+✅ **Cookies ব্যবহার করা হয়:**  
+- **User Authentication** – User login state store করতে।  
+- **Preferences Management** – Theme, Language, এবং Settings সংরক্ষণ করতে।  
+- **Shopping Cart Management** – E-commerce সাইটে **cart items** সংরক্ষণ করতে।  
+
+---
+
+## 2️⃣ **Why Use Cookies?**  
+
+| Feature | Description |
+|---------|-------------|
+| **User Identification** | Logged-in user কে চিনতে সাহায্য করে। |
+| **Personalized Content** | User-এর পছন্দ অনুযায়ী content পরিবর্তন করা যায়। |
+| **Shopping Cart** | Products স্মরণ রাখা যায়। |
+| **Session Tracking** | User এর গতিবিধি track করা সম্ভব। |
+
+---
+
+## 3️⃣ **Creating Cookies in PHP**  
+
+🔹 **PHP-তে Cookies তৈরি করতে `setcookie()` function ব্যবহার করা হয়।**  
+
+✅ **Syntax:**  
+```php
+setcookie(name, value, expire, path, domain, secure, httponly);
+```
+| Parameter | Description |
+|-----------|-------------|
+| **name** | Cookie-এর নাম |
+| **value** | Cookie-এর value |
+| **expire** | কবে cookie expire হবে (UNIX timestamp) |
+| **path** | Cookie **কোন directory/subdirectory** তে valid হবে |
+| **domain** | Cookie **কোন domain** এ valid হবে |
+| **secure** | `true` হলে cookie **HTTPS তে পাঠানো হবে** |
+| **httponly** | `true` হলে cookie **JavaScript থেকে access করা যাবে না** |
+
+✅ **Example: Creating a Cookie**  
+```php
+<?php
+setcookie("username", "JohnDoe", time() + 3600, "/"); // 1 Hour Expiry
+echo "Cookie has been set!";
+?>
+```
+✅ **Explanation:**  
+- `"username"` → Cookie-এর নাম।  
+- `"JohnDoe"` → Cookie-এর মান।  
+- `time() + 3600` → 1 ঘণ্টা পরে Cookie মেয়াদ শেষ হবে।  
+- `"/"` → পুরো website জুড়ে cookie valid থাকবে।  
+
+---
+
+## 4️⃣ **Retrieving Cookies in PHP**  
+
+🔹 **PHP তে `$_COOKIE` Superglobal ব্যবহার করে Cookies পড়া হয়।**  
+
+✅ **Example: Get a Cookie**  
+```php
+<?php
+if (isset($_COOKIE["username"])) {
+    echo "Welcome, " . $_COOKIE["username"];
+} else {
+    echo "No cookie found!";
+}
+?>
+```
+✅ **Explanation:**  
+- `isset($_COOKIE["username"])` → চেক করা হয় Cookie আছে কিনা।  
+- **If available**, Cookie-এর মান print করা হয়।  
+
+---
+
+## 5️⃣ **Updating Cookies in PHP**  
+
+🔹 **Cookies Update করার জন্য, নতুন মান সহ `setcookie()` আবার কল করতে হয়।**  
+
+✅ **Example: Updating a Cookie**  
+```php
+<?php
+setcookie("username", "Alice", time() + 3600, "/");
+echo "Cookie has been updated!";
+?>
+```
+✅ **Explanation:**  
+- পুরনো **"JohnDoe"** cookie **নতুন মান "Alice" দিয়ে ওভাররাইট** করা হলো।  
+
+---
+
+## 6️⃣ **Deleting Cookies in PHP**  
+
+🔹 **Cookies মুছতে, `setcookie()` কে `time() - 3600` (Past Time) দিয়ে কল করতে হয়।**  
+
+✅ **Example: Deleting a Cookie**  
+```php
+<?php
+setcookie("username", "", time() - 3600, "/");
+echo "Cookie has been deleted!";
+?>
+```
+✅ **Explanation:**  
+- `time() - 3600` দিয়ে Cookie **এক ঘণ্টা আগের সময় সেট করা হয়**, ফলে Cookie মুছে যায়।  
+
+---
+
+## 7️⃣ **Setting Expiration Time for Cookies**  
+
+✅ **Example: Expiring Cookie After 1 Day**  
+```php
+<?php
+setcookie("user_pref", "dark_mode", time() + (86400 * 1), "/"); // 1 day
+?>
+```
+✅ **Example: Expiring Cookie After 1 Year**  
+```php
+<?php
+setcookie("theme", "light", time() + (86400 * 365), "/"); // 1 Year
+?>
+```
+
+---
+
+## 8️⃣ **Secure Cookie Handling**  
+
+🔹 **Security Risks Prevent করতে `secure` এবং `httponly` Flags ব্যবহার করুন।**  
+
+✅ **Example: Secure HTTP-only Cookie**  
+```php
+<?php
+setcookie("auth_token", "randomtoken123", time() + 3600, "/", "", true, true);
+?>
+```
+| Parameter | Explanation |
+|-----------|-------------|
+| `true` (Secure) | Cookie শুধুমাত্র **HTTPS তে পাঠানো হবে**। |
+| `true` (HttpOnly) | Cookie **JavaScript থেকে access করা যাবে না (XSS Protection)**। |
+
+---
+
+## 9️⃣ **Best Practices**  
+
+✅ **Always Set Expiry Time for Cookies**  
+```php
+setcookie("user", "John", time() + 3600, "/"); // 1 Hour Expiry
+```
+
+✅ **Use Secure and HttpOnly Flags**  
+```php
+setcookie("session_id", "xyz123", time() + 3600, "/", "", true, true);
+```
+
+✅ **Check if Cookie Exists Before Accessing**  
+```php
+if (isset($_COOKIE["username"])) {
+    echo "User: " . $_COOKIE["username"];
+}
+```
+
+✅ **Delete Cookies Properly**  
+```php
+setcookie("username", "", time() - 3600, "/");
+```
+
+---
+
+## 🎯 **Final Summary**  
+
+PHP **Cookies** হলো **user preferences, authentication, এবং session tracking** এর জন্য ব্যবহৃত **client-side storage mechanism**।  
+
+✅ **Key Features:**  
+- `setcookie()` → Cookie সেট করা।  
+- `$_COOKIE` → Cookie রিড করা।  
+- `time() + EXPIRY_TIME` → Cookie মেয়াদ ঠিক করা।  
+- `time() - 3600` → Cookie মুছে ফেলা।  
+- **Secure Cookies** → `Secure` এবং `HttpOnly` flags ব্যবহার করা।  
+
+<div align="right">
+    <b><a href="#php-course-in-bangla">⬆️ Go to Top</a></b>
+</div>
+
+# Chapter-26: 🔐 PHP Sessions
+
+PHP **Sessions** হলো **server-side storage mechanism**, যা ব্যবহারকারীর তথ্য সংরক্ষণ করে এবং **multiple pages এ data persist** রাখতে সাহায্য করে। এটি **Cookies এর চেয়ে বেশি নিরাপদ** কারণ data **server-side store করা হয়** এবং **client-side এ সরাসরি access করা যায় না**।  
+
+---
+
+## **Table of Contents**
+1. [What is a PHP Session?](#what-is-a-php-session)  
+2. [Why Use PHP Sessions?](#why-use-php-sessions)  
+3. [Starting a Session in PHP](#starting-a-session-in-php)  
+4. [Setting and Retrieving Session Variables](#setting-and-retrieving-session-variables)  
+5. [Destroying a Session](#destroying-a-session)  
+6. [Session Timeout and Auto Expiry](#session-timeout-and-auto-expiry)  
+7. [Session Security Best Practices](#session-security-best-practices)  
+8. [Best Practices](#best-practices)  
+
+---
+
+## 1️⃣ **What is a PHP Session?**  
+
+✅ **PHP Session** হলো **server-side storage** যেখানে **user-specific data store** করা যায়।  
+✅ **Session ID** ব্যবহার করে server **user-এর session track করে**।  
+
+🔹 **Example Use Cases:**  
+- **User Authentication (Login System)**  
+- **Shopping Cart Management**  
+- **User Preferences Storage**  
+- **Multi-page Form Handling**  
+
+---
+
+## 2️⃣ **Why Use PHP Sessions?**  
+
+| Feature | Description |
+|---------|-------------|
+| **Server-side Storage** | Data server এ store হয়, client-side এ নয়। |
+| **More Secure than Cookies** | Data browser এ store হয় না, তাই security বেশি। |
+| **User Tracking Possible** | লগইন করা user কে track করা সহজ। |
+| **Temporary Storage** | User এর session-based temporary data store করা যায়। |
+
+✅ **Cookies vs Sessions**  
+
+| Feature | Cookies | Sessions |
+|---------|---------|----------|
+| **Storage Location** | Client-side | Server-side |
+| **Security** | কম | বেশি |
+| **Expiry** | নির্দিষ্ট সময় পরে মেয়াদ শেষ হয় | যতক্ষণ user active থাকে ততক্ষণ |
+
+---
+
+## 3️⃣ **Starting a Session in PHP**  
+
+🔹 **PHP তে session শুরু করতে `session_start()` ব্যবহার করা হয়।**  
+
+✅ **Example: Start a Session**  
+```php
+<?php
+session_start();
+?>
+```
+
+🔹 **`session_start()` সবসময় PHP স্ক্রিপ্টের প্রথমে রাখতে হবে।**  
+
+✅ **Example: Full Code**  
+```php
+<?php
+session_start(); // Start session
+
+$_SESSION["username"] = "JohnDoe"; // Set session variable
+echo "Session Started. Username is " . $_SESSION["username"];
+?>
+```
+
+---
+
+## 4️⃣ **Setting and Retrieving Session Variables**  
+
+### ✅ **1. Setting a Session Variable**  
+```php
+<?php
+session_start();
+$_SESSION["user_id"] = 101;
+$_SESSION["email"] = "user@example.com";
+?>
+```
+
+### ✅ **2. Retrieving a Session Variable**  
+```php
+<?php
+session_start();
+echo "User ID: " . $_SESSION["user_id"] . "<br>";
+echo "Email: " . $_SESSION["email"];
+?>
+```
+
+---
+
+## 5️⃣ **Destroying a Session**  
+
+🔹 **Session মুছে ফেলার জন্য তিনটি ধাপ অনুসরণ করুন:**  
+1. **Session Variables Unset করুন** → `session_unset()`  
+2. **Session Destroy করুন** → `session_destroy()`  
+3. **Session Cookie মুছে ফেলুন** → `setcookie(session_name(), "", time() - 3600, "/")`  
+
+✅ **Example: Destroy a Session**  
+```php
+<?php
+session_start();
+session_unset();  // Remove all session variables
+session_destroy(); // Destroy the session
+setcookie(session_name(), "", time() - 3600, "/"); // Delete session cookie
+echo "Session Destroyed!";
+?>
+```
+
+---
+
+## 6️⃣ **Session Timeout and Auto Expiry**  
+
+🔹 **Session timeout সেট করতে `$_SESSION['LAST_ACTIVITY']` ব্যবহার করুন।**  
+
+✅ **Example: Auto Logout After 10 Minutes**  
+```php
+<?php
+session_start();
+
+if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 600)) { // 600 seconds = 10 minutes
+    session_unset();
+    session_destroy();
+    echo "Session expired due to inactivity.";
+} else {
+    $_SESSION['LAST_ACTIVITY'] = time(); // Update last activity timestamp
+}
+?>
+```
+
+✅ **Explanation:**  
+- **User 10 মিনিটের বেশি inactive থাকলে session destroy হবে।**  
+
+---
+
+## 7️⃣ **Session Security Best Practices**  
+
+✅ **1. Use `session_regenerate_id()` to Prevent Session Hijacking**  
+```php
+session_start();
+session_regenerate_id(true); // Change session ID to prevent hijacking
+```
+
+✅ **2. Use `session_set_cookie_params()` for Secure Cookies**  
+```php
+session_set_cookie_params([
+    'lifetime' => 0,
+    'path' => '/',
+    'domain' => '',
+    'secure' => true,   // Only send over HTTPS
+    'httponly' => true, // Prevent JavaScript access
+    'samesite' => 'Strict'
+]);
+session_start();
+```
+
+✅ **3. Store Session Data in a Secure Directory**  
+```php
+session_save_path("/secure_sessions/");
+session_start();
+```
+
+✅ **4. Prevent Session Fixation**  
+```php
+session_start();
+session_regenerate_id(true);
+```
+
+✅ **5. Destroy Session After Logout**  
+```php
+session_start();
+session_unset();
+session_destroy();
+setcookie(session_name(), "", time() - 3600, "/");
+```
+
+---
+
+## 8️⃣ **Best Practices**  
+
+✅ **Use `session_start()` at the Beginning of the Script**  
+```php
+session_start();
+```
+
+✅ **Always Unset and Destroy Session on Logout**  
+```php
+session_unset();
+session_destroy();
+```
+
+✅ **Use Secure Cookie Parameters**  
+```php
+session_set_cookie_params(['secure' => true, 'httponly' => true]);
+```
+
+✅ **Set Session Timeout to Prevent Unauthorized Access**  
+```php
+$_SESSION['LAST_ACTIVITY'] = time();
+if (time() - $_SESSION['LAST_ACTIVITY'] > 600) { session_destroy(); }
+```
+
+✅ **Store Sensitive Data Securely**  
+```php
+$_SESSION["user_data"] = password_hash("secureData", PASSWORD_DEFAULT);
+```
+
+---
+
+## 🎯 **Final Summary**  
+
+PHP **Sessions** ব্যবহার করে **user data store এবং multiple page-এ persist** করা সম্ভব। এটি **authentication, shopping cart, এবং user preferences management** এর জন্য অপরিহার্য।  
+
+🔹 **Key Features:**  
+- **Server-side data storage** (Cookies এর মতো client-side নয়)।  
+- **Security বেশি** কারণ data **server-এ store হয়**।  
+- **Session Timeout এবং Expiry সেট করা যায়**।  
+- **Session Hijacking থেকে বাঁচতে `session_regenerate_id()` ব্যবহার করুন।**  
+
+
+<div align="right">
+    <b><a href="#php-course-in-bangla">⬆️ Go to Top</a></b>
+</div>
+
+# Chapter-27: 
+
+<div align="right">
+    <b><a href="#php-course-in-bangla">⬆️ Go to Top</a></b>
+</div>
+
+# Chapter-28: 
+
+<div align="right">
+    <b><a href="#php-course-in-bangla">⬆️ Go to Top</a></b>
+</div>
+
+# Chapter-29: 
+
+<div align="right">
+    <b><a href="#php-course-in-bangla">⬆️ Go to Top</a></b>
+</div>
+
+# Chapter-30: 
+
+<div align="right">
+    <b><a href="#php-course-in-bangla">⬆️ Go to Top</a></b>
+</div>
+
+# Chapter-31: 
 
 <div align="right">
     <b><a href="#php-course-in-bangla">⬆️ Go to Top</a></b>
