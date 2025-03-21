@@ -43,7 +43,7 @@ After completing the 30-chapters module, jump in the [Projects Section](#).
 |                  [34](#chapter-34-php-oop-abstract-classes)                      |            [PHP OOP - Abstract Classes](#chapter-34-php-oop-abstract-classes)                                                           |         [Watch Now]()                 |
 |                      [35](#chapter-35-php-oop-interfaces-with-a-corporate-teamwork-story)                      |                 [PHP OOP - Interfaces with a Corporate Teamwork Story](#chapter-35-php-oop-interfaces-with-a-corporate-teamwork-story)                                                           |         [Watch Now]()                 |
 |                      [36](#chapter-36-php-oop-traits-with-a-story-of-superskills-academy)                      |                 [PHP OOP - Traits with a Story of Superskills Academy](#chapter-36-php-oop-traits-with-a-story-of-superskills-academy)                                                           |         [Watch Now]()                 |
-|                  [37](#chapter-37-php-oop-static-properties--methods-with-a-story-of-robofactory)                      |            [PHP OOP - Static Properties & Methods with a Story of RoboFactory](#chapter-37-php-oop-static-properties--methods-with-a-story-of-robofactory)                                                           |         [Watch Now]()                 |
+|                  [37](#chapter-37-php-oop-static-properties-methods-with-a-story-of-robofactory)                      |            [PHP OOP - Static Properties & Methods with a Story of RoboFactory](#chapter-37-php-oop-static-properties-methods-with-a-story-of-robofactory)                                                           |         [Watch Now]()                 |
 |                      [38](#chapter-38-php-namespaces-with-a-story-of-citylibrary)                      |                 [PHP Namespaces with a Story of CityLibrary](#chapter-38-php-namespaces-with-a-story-of-citylibrary)                                                           |         [Watch Now]()                 |
 |                      [39](#chapter-39-php-iterables--বিস্তারিত-ব্যাখ্যা-with-a-story-of-the-delivery-drones)                      |       [PHP Iterables](#chapter-39-php-iterables--বিস্তারিত-ব্যাখ্যা-with-a-story-of-the-delivery-drones)                                                               |                       |
 |                  [40](#chapter-40-introduction-to-php-mysql-database-with-the-story-of-foodies-hub)                      |            [Introduction to PHP MySQL Database with the Story of Foodies Hub](#chapter-40-introduction-to-php-mysql-database-with-the-story-of-foodies-hub)                                                           |         [Watch Now]()                 |
@@ -7327,7 +7327,7 @@ foreach ($items as $item) {
     <b><a href="#php-course-in-bangla">⬆️ Go to Top</a></b>
 </div>
 
-# Chapter-32: PHP OOP – Access Modifiers
+# Chapter-32: PHP OOP: Access Modifiers
 
 ## 🧭 Table of Contents
 
@@ -7512,7 +7512,7 @@ echo $patient->getDoctorNote();           // ✅ protected accessed via subclass
     <b><a href="#php-course-in-bangla">⬆️ Go to Top</a></b>
 </div>
 
-# Chapter-33: PHP OOP – Inheritance 
+# Chapter-33: PHP OOP: Inheritance 
 
 ## 🧭 Table of Contents
 
@@ -7727,7 +7727,7 @@ $teacher->introduce();
     <b><a href="#php-course-in-bangla">⬆️ Go to Top</a></b>
 </div>
 
-# Chapter-34: PHP OOP – Abstract Classes
+# Chapter-34: PHP OOP: Abstract Classes
 
 ## 🧭 Table of Contents
 
@@ -7889,7 +7889,7 @@ $payment2->printReceipt(1000);
     <b><a href="#php-course-in-bangla">⬆️ Go to Top</a></b>
 </div>
 
-# Chapter-35: PHP OOP – Interfaces (with a Corporate Teamwork Story)
+# Chapter-35: PHP OOP: Interfaces (with a Corporate Teamwork Story)
 
 ## 🧭 Table of Contents
 
@@ -8079,7 +8079,7 @@ notifyUser(new PushNotification(), "You have a new message.");
     <b><a href="#php-course-in-bangla">⬆️ Go to Top</a></b>
 </div>
 
-# Chapter-36: PHP OOP – Traits (with a Story of SuperSkills Academy)
+# Chapter-36: PHP OOP: Traits (with a Story of SuperSkills Academy)
 
 ## 🧭 Table of Contents
 
@@ -8264,7 +8264,7 @@ $payment->processPayment(1000);
     <b><a href="#php-course-in-bangla">⬆️ Go to Top</a></b>
 </div>
 
-# Chapter-37: PHP OOP – Static Properties & Methods (with a Story of RoboFactory)
+# Chapter-37: PHP OOP: Static Properties & Methods (with a Story of RoboFactory)
 
 ## 🧭 Table of Contents
 
@@ -8576,7 +8576,7 @@ class Issue {}
     <b><a href="#php-course-in-bangla">⬆️ Go to Top</a></b>
 </div>
 
-# Chapter-39: PHP Iterables – বিস্তারিত ব্যাখ্যা (with a Story of the Delivery Drones)
+# Chapter-39: PHP Iterables: বিস্তারিত ব্যাখ্যা (with a Story of the Delivery Drones)
 
 ## 🧭 Table of Contents
 
